@@ -18,12 +18,9 @@ const API_URL = 'https://localhost3000/'
 const Content = props => {
 
   let token = localStorage.getItem('boilerToken')
-
-  let [secretMessage, setSecretMessage] = useState('')
-  let [item, setItem ] = useState([])
-  let [thisUser, setThisUser] = useState(false)
   
 
+  let [secretMessage, setSecretMessage] = useState('')
   //maybe going to need a useEffect that calls the API
   const callAPI = () => {
    let token = localStorage.getItem('boilerToken')
@@ -36,18 +33,21 @@ const Content = props => {
    })
    .then(response => {
      console.log(response)
-     return response.json()
+     return response.json
    })
    .then(data => {
-     console.log('this is the data', data)
-     setItem(data)
+     console.log(data)
    })
    .catch(err => {
      console.log(err, 'Error fetching the API')
    })
  }
 
- 
+
+
+ useEffect(() => {
+   callAPI()
+ })
 
  useEffect(() => {
    let token = localStorage.getItem('boilerToken')
@@ -68,19 +68,17 @@ const Content = props => {
      .then(result => {
        console.log(result)
        setSecretMessage(result.message)
-       setThisUser(true)
-       callAPI()
+       
      })
    })
    .catch(err => {
      console.log(err)
      setSecretMessage('No message for YOU!')
    })
-   
- }, [])
-//  if (!props.user) {
-//    return <Redirect to="/login" />
-//  }
+ })
+ if (!props.user) {
+   return <Redirect to="/login" />
+ }
 
 
   return (
@@ -90,7 +88,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} item={item} />
+        () => <Profile user={props.user} url={API_URL} />
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
