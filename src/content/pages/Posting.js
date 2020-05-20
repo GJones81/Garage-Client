@@ -11,7 +11,7 @@ const Posting = props => {
     return (
         //As a suggestion maybe we should have two different forms and use routers??
         <div>
-             <div>
+             <div className="addForms">
                 <h3>Create A New List</h3>
                 <NewList />
             </div>
