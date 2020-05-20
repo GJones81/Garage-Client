@@ -3,7 +3,8 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer>
-      Made by Guy in 2020
+      Made by Guy & Sam 2020
+      © Copyright Garagé
     </footer>
   )
 }

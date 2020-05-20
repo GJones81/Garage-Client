@@ -53,5 +53,8 @@ nav a:hover {
 .red {
   color: red;
 }
+form {
+  display: block;
+}
 
 

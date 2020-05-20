@@ -18,6 +18,7 @@ const App = props => {
   useEffect(() => {
     decodeToken()
   }, [])
+  //How the token gets decoded and updated 
 
   const decodeToken = () => {
     let token = localStorage.getItem('boilerToken')
