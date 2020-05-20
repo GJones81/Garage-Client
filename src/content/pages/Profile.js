@@ -9,12 +9,6 @@ import { Redirect } from 'react-router-dom'
 
 const Profile = props => {
 
-	
-
-	
-
-
-
 	// let itemz = props.list.item.map((l, i) => {
 	// 	return (
 	// 		<div key={i}>
