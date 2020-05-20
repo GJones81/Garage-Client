@@ -23,13 +23,10 @@ const Profile = props => {
 	// 	console.log(l)
 	// })
 
-	let itemz = props.item.currentList[0].item.map((l, i) => {
+	let itemz = props.item.currentList.map((l, i) => {
 		return (
 			<div key={i}>
-				<img src={l.image} />
-				<p>{l.name}</p>
-				<p>{l.price}</p>
-				<p>{l.condition}</p>
+				<p>{l.listTitle}</p>
 			</div>
 		)
 	})
