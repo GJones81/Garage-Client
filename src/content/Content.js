@@ -1,10 +1,10 @@
 // Packages
-import React from 'react'
-import { Route } from 'react-router-dom'
+import React, { useEffect, useState} from 'react'
+import { Route, Redirect } from 'react-router-dom'
 import { Image, Transformation, CloudinaryContext } from 'cloudinary-react' 
 import clodinaryCore from 'cloudinary-core'
 
-// Custom componentd
+// Custom component
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
@@ -13,13 +13,70 @@ import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
 import Axios from 'axios'
 
+const API_URL = 'https://localhost3000/'
+
 const Content = props => {
 
   let token = localStorage.getItem('boilerToken')
 
+  let [secretMessage, setSecretMessage] = useState('')
+  //maybe going to need a useEffect that calls the API
   const callAPI = () => {
-    console.log('API called')
-  }
+   let token = localStorage.getItem('boilerToken')
+   console.log('API Function running')
+   fetch('http://localhost:3000/list', {
+     method: 'GET',
+     headers: {
+       'Authorization': `Bearer ${token}`
+     }
+   })
+   .then(response => {
+     console.log(response)
+     return response.json
+   })
+   .then(data => {
+     console.log(data)
+   })
+   .catch(err => {
+     console.log(err, 'Error fetching the API')
+   })
+ }
+
+
+
+ useEffect(() => {
+   callAPI()
+ })
+
+ useEffect(() => {
+   let token = localStorage.getItem('boilerToken')
+   console.log(token)
+   fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
+     headers: {
+       'Authorization': `Bearer ${token}`
+     }
+   })
+   .then(response => {
+     //response = token(from the server side)
+     console.log('Response', response)
+     if (!response.ok) {
+       setSecretMessage('Nice try!')
+       return
+     }
+     response.json()
+     .then(result => {
+       console.log(result)
+       setSecretMessage(result.message)
+     })
+   })
+   .catch(err => {
+     console.log(err)
+     setSecretMessage('No message for YOU!')
+   })
+ })
+ if (!props.user) {
+   return <Redirect to="/login" />
+ }
 
 
   return (
@@ -29,7 +86,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} />
+        () => <Profile user={props.user} url={API_URL} />
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
