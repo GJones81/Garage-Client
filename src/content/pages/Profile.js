@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom'
 //this component should list all the items 
 
 const Profile = props => {
-	
+
 
 	let itemz = props.item.currentList.map((l, i) => {
 		return (

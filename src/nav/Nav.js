@@ -25,6 +25,12 @@ const Nav = props => {
     links = (
       <span>
         <li>
+          <Link to="/posting">Posting</Link>
+        </li>
+        <li>
+          <Link to="/discovery">Discovery</Link>
+        </li>
+        <li>
           <Link to="/profile">Profile</Link>
         </li>
         <li>

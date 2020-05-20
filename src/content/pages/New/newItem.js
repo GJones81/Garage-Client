@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 //This is the form to add a new item to the list 
 const NewItem = props => {
+
     // let [listItem, setListItem] = useState()
 
     let checkUploadResult = (resultEvent) => {
