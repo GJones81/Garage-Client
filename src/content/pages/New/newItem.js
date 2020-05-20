@@ -1,7 +1,7 @@
 import React from 'react';
 
 //This is the form to add a new item to the list 
-const newItem = props => {
+const NewItem = props => {
 
     let checkUploadResult = (resultEvent) => {
         
@@ -46,4 +46,4 @@ const newItem = props => {
     )
 }
 
-export default newItem
+export default NewItem
