@@ -8,23 +8,32 @@ import { Redirect } from 'react-router-dom'
 //this component should list all the items 
 
 const Profile = props => {
-
 	
-
 	
-
-
-
-	// let itemz = props.list.item.map((l, i) => {
-	// 	return (
-	// 		<div key={i}>
-	// 			<img src={l.image} />
-	// 			<p>{l.name}</p>
-	// 			<p>{l.price}</p>
-	// 			<p>{l.condition}</p>
-	// 		</div>
-	// 	)
+	// let itemz = props.item.currentList.map((l, i) => {
+	// 	l.item.map((x, y) => {
+	// 		return (
+	// 			<div key={y}>
+	// 				<img src={x.image} />
+	// 				<p>{x.name}</p>
+	// 				<p>{x.price}</p>
+	// 				<p>{x.condition}</p>
+	// 			</div>
+	// 		)
+	// 	})
+	// 	console.log(l)
 	// })
+
+	let itemz = props.item.currentList[0].item.map((l, i) => {
+		return (
+			<div key={i}>
+				<img src={l.image} />
+				<p>{l.name}</p>
+				<p>{l.price}</p>
+				<p>{l.condition}</p>
+			</div>
+		)
+	})
 
   return (
     <div>
@@ -35,7 +44,7 @@ const Profile = props => {
 		</div>
 		<div>
 			<button><a href='/posting'>+</a></button>
-			{/* {itemz} */}
+			{itemz}
 		</div>
     </div>
   )
