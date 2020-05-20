@@ -8,6 +8,7 @@ const Posting = props => {
 
     
     
+    
     return (
         //As a suggestion maybe we should have two different forms and use routers??
         <div>
