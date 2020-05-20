@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //This is the form to add a new item to the list 
-const newItem = props => {
+const NewItem = props => {
+    // let [listItem, setListItem] = useState()
 
     let checkUploadResult = (resultEvent) => {
         
@@ -29,7 +30,7 @@ const newItem = props => {
 
     return (
         <div>
-            <div className="poster">
+            <div className="itemForm">
                 <button onClick={() => showWidget(widget)}>Upload</button>
                 <form>
                     <label>Image:</label>
@@ -46,4 +47,4 @@ const newItem = props => {
     )
 }
 
-export default newItem
+export default NewItem
