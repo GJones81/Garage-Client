@@ -12,12 +12,13 @@ const Posting = props => {
     return (
         //As a suggestion maybe we should have two different forms and use routers??
         <div>
-            <div className="addForms">
-                <Route exact path='/newItem' component={NewItem} /> 
+             <div className="addForms">
+                <h3>Create A New List</h3>
+                <NewList />
             </div>
-            <div>
-                <Route exact path='/newListing' component={NewList} />
-                
+            <div className="addForms">
+                <h3>Add New Items To Your List</h3>
+                <NewItem />
             </div>
         </div>
     )

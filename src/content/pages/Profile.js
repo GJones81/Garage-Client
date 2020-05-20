@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 
 const Profile = props => {
-	
+
 
 	let itemz = props.item.currentList.map((l, i) => {
 		return (
