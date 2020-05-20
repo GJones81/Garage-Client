@@ -5,8 +5,6 @@ import { Redirect } from 'react-router-dom'
 //Declare API URL that we want to call 
 
 
-//this component should list all the items 
-
 const Profile = props => {
 	
 
