@@ -13,13 +13,13 @@ import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
 import Axios from 'axios'
 
-const API_URL = 'https://localhost3000/'
+const API_URL = 'https://localhost:3000/'
 
 const Content = props => {
 
   let token = localStorage.getItem('boilerToken')
 
-  let [item, setItem] = useState({currentList: []})
+  let [list, setList] = useState({currentList: []})
   let [sale, setSale] = useState({currentSales: []})
   let [thisUser, setThisUser] = useState(false)
   let [secretMessage, setSecretMessage] = useState('')
@@ -40,7 +40,7 @@ const Content = props => {
    })
    .then(listData => {
      console.log('ListAPI', listData)
-     setItem(listData)
+     setList(listData)
    })
    .catch(err => {
      console.log(err, 'Error fetching the ListAPI')
@@ -100,7 +100,9 @@ const Content = props => {
        console.log(result)
        setSecretMessage(result.message)
        setThisUser(true)
-       callAPI()
+       //callAPI()
+       callListAPI()
+       callSaleAPI()
      })
    })
    .catch(err => {
@@ -109,9 +111,9 @@ const Content = props => {
    })
  }, [])
 
- if (!props.user) {
-   return <Redirect to="/login" />
- }
+ // if (!props.user) {
+ //   return <Redirect to="/login" />
+ //}
 
 
   return (
@@ -121,7 +123,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} item={item} sale={sale}/>
+        () => <Profile user={props.user} url={API_URL} list={list} sale={sale}/>
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />

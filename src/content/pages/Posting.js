@@ -6,7 +6,15 @@ import NewList from './New/NewList'
 
 const Posting = props => {
 
-    let list = props.item.currentList[0].item.map((l, i) => {
+    let listTitle = props.list.currentList.map((T, i) => {
+        return (
+            <div key={i}>
+                <p>{T.listTitle}</p>
+            </div>
+         )
+    })
+
+    let list = props.list.currentList[0].item.map((l, i) => {
         return (
             <div key={i}>
                 <p>Item</p>
@@ -33,6 +41,7 @@ const Posting = props => {
                 <NewItem />
             </div>
             <div>
+                {listTitle}
                 {list}
             </div>
         </div>

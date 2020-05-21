@@ -4,10 +4,15 @@ import { Redirect } from 'react-router-dom'
 //Go over how tokens are used to make an API call and retrieve info
 //Declare API URL that we want to call 
 
+// POST /sale
+
+// PUT sale/:id
+
+// DELETE sale/:id
 
 const Profile = props => {
 
-	let itemz = props.item.currentList.map((l, i) => {
+	let itemz = props.list.currentList.map((l, i) => {
 		return (
 			<div key={i}>
 				<p>{l.listTitle}</p>
