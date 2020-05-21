@@ -33,6 +33,7 @@ const Posting = props => {
         let itemz = l.item.map((x, y) => {
             return (
             <div key={y}>
+
                 <p>Item</p>
                 <p>{x.name}</p>
                 <p>Price</p>
@@ -65,6 +66,7 @@ const Posting = props => {
                 <NewItem  url = { props.url} token = {props.updateToken}/>
             </div>
             <div>
+                {listTitle}
                 {list}
                 
             </div>

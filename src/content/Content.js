@@ -12,10 +12,11 @@ import Signup from './pages/Signup'
 import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
 
-
 const API_URL = 'http://localhost:3000/'
 
+
 const Content = props => {
+
   let [lists, setLists] = useState([])
   let [sale, setSale] = useState({currentSales: []})
   
@@ -74,6 +75,7 @@ const Content = props => {
  }, [])
 
 
+
   return (
     <div className="container">
       <Route exact path="/" component={Home} />
@@ -97,6 +99,7 @@ const Content = props => {
           url={API_URL} 
           updateToken={props.updateToken}
         />
+
       } />
     </div>
   )

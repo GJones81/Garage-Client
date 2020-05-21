@@ -4,10 +4,13 @@ import { Redirect } from 'react-router-dom'
 //Go over how tokens are used to make an API call and retrieve info
 //Declare API URL that we want to call 
 
+// POST /sale
+
+// PUT sale/:id
+
+// DELETE sale/:id
 
 const Profile = props => {
-
-	
 
 	let itemz = props.lists.map((l, i) => {
 		return (
@@ -28,6 +31,10 @@ const Profile = props => {
 	if (!props.user) {
 		return <Redirect to="/login" />
  	}
+
+	if (!props.user) {
+		return <Redirect to="/login" />
+	  }
 
   return (
     <div>

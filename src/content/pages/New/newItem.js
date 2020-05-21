@@ -1,5 +1,24 @@
 import React, { useState } from 'react';
 
+// POST list/item
+// const listItemAPI = () => {
+//     let token = localStorage.getItem('boilerToken')
+//     fetch('http://localhost:3000/list/item', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             user: req.user
+            
+//         }),
+//         headers: {
+//             'Authorization': `Bearer ${token}`
+//         }
+//     })
+// }
+
+// PUT list/item/:id
+
+// DELETE list/item/:id
+
 
 //This is the form to add a new item to the list 
 const NewItem = props => {
