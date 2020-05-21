@@ -19,7 +19,7 @@ const Content = props => {
 
   let token = localStorage.getItem('boilerToken')
 
-  let [list, setList] = useState({currentList: []})
+  let [lists, setLists] = useState([])
   let [sale, setSale] = useState({currentSales: []})
   let [thisUser, setThisUser] = useState(false)
   let [secretMessage, setSecretMessage] = useState('')
@@ -40,7 +40,7 @@ const Content = props => {
    })
    .then(listData => {
      console.log('ListAPI', listData)
-     setList(listData)
+     setLists(listData.currentLists)
    })
    .catch(err => {
      console.log(err, 'Error fetching the ListAPI')
@@ -111,9 +111,7 @@ const Content = props => {
    })
  }, [])
 
- // if (!props.user) {
- //   return <Redirect to="/login" />
- //}
+
 
 
   return (
@@ -123,7 +121,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} list={list} sale={sale}/>
+        () => <Profile user={props.user} url={API_URL} lists={lists} sale={sale}/>
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
@@ -132,7 +130,7 @@ const Content = props => {
         () => <Discovery user={props.user} />
       } />
       <Route path="/posting" render={
-        () => <Posting user={props.user} item={item} sale={sale} />
+        () => <Posting user={props.user} lists={lists} sale={sale} />
       } />
     </div>
   )
