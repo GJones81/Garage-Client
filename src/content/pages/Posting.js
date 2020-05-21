@@ -6,7 +6,9 @@ import NewList from './New/NewList'
 
 const Posting = props => {
 
-    
+
+    // const display 
+
     
     
     return (
