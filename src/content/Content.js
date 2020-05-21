@@ -18,36 +18,68 @@ const API_URL = 'https://localhost3000/'
 const Content = props => {
 
   let token = localStorage.getItem('boilerToken')
-  
 
+  let [item, setItem] = useState({currentList: []})
+  let [sale, setSale] = useState({currentSales: []})
+  let [thisUser, setThisUser] = useState(false)
   let [secretMessage, setSecretMessage] = useState('')
-  //maybe going to need a useEffect that calls the API
-  const callAPI = () => {
+
+  //calls the List model to retrieve the List data 
+  const callListAPI = () => {
    let token = localStorage.getItem('boilerToken')
-   console.log('API Function running')
+   console.log('ListAPI Function running')
    fetch('http://localhost:3000/list', {
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
      }
    })
-   .then(response => {
-     console.log(response)
-     return response.json
+   .then(listResponse => {
+     console.log('ListAPI',listResponse)
+     return listResponse.json()
    })
-   .then(data => {
-     console.log(data)
+   .then(listData => {
+     console.log('ListAPI', listData)
+     setItem(listData)
    })
    .catch(err => {
-     console.log(err, 'Error fetching the API')
+     console.log(err, 'Error fetching the ListAPI')
    })
  }
 
+ //calls the Sale model to retrieve the Sale data
+ const callSaleAPI = () => {
+   let token = localStorage.getItem('boilerToken')
+   console.log('SaleAPI Function running')
+   fetch('http://localhost:3000/sale', {
+     method: 'GET',
+     headers: {
+       'Authorization': `Bearer ${token}`
+     }
+   })
+   .then(saleResponse => {
+     console.log('SaleAPI', saleResponse)
+     return saleResponse.json()
+   })
+   .then(saleData => {
+     console.log('SaleAPI', saleData)
+     setSale(saleData)
+   })
+   .catch(err => {
+     console.log(err, 'Error fetching the SaleAPI')
+   })
+ }
 
-
+ //calls the ListAPI on line 28
  useEffect(() => {
-   callAPI()
- })
+   callListAPI()
+   callSaleAPI()
+ }, [])
+
+ //calls the SaleAPI on line 51
+ // useEffect(() => {
+ //   callSaleAPI()
+ // }, [])
 
  useEffect(() => {
    let token = localStorage.getItem('boilerToken')
@@ -75,11 +107,10 @@ const Content = props => {
      console.log(err)
      setSecretMessage('No message for YOU!')
    })
- })
+ }, [])
  if (!props.user) {
    return <Redirect to="/login" />
  }
-
 
   return (
     <div className="container">
@@ -88,7 +119,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} />
+        () => <Profile user={props.user} url={API_URL} item={item} sale={sale}/>
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
