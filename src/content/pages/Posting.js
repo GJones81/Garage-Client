@@ -6,10 +6,20 @@ import NewList from './New/NewList'
 
 const Posting = props => {
 
+    let list = props.item.currentList[0].item.map((l, i) => {
+        return (
+            <div key={i}>
+                <p>Item</p>
+                <p>{l.name}</p>
+                <p>Price</p>
+                <p>${l.price}</p>
+                <p>Condition</p>
+                <p>{l.condition}</p>
+                <img src={l.image}></img>
+            </div>
+        )
+    })
 
-    // const display 
-
-    
     
     return (
         //As a suggestion maybe we should have two different forms and use routers??
@@ -21,6 +31,9 @@ const Posting = props => {
             <div className="addForms">
                 <h3>Add New Items To Your List</h3>
                 <NewItem />
+            </div>
+            <div>
+                {list}
             </div>
         </div>
     )

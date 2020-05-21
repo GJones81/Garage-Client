@@ -15,6 +15,15 @@ const Profile = props => {
 		)
 	})
 
+	let sales = props.sale.currentSales.map((s, j) => {
+		return (
+			<div key={j}>
+				<p>{s.date}</p>
+				<p>{s.address}</p>
+			</div>
+		)
+	})
+
   return (
     <div>
 		<div>
@@ -24,7 +33,7 @@ const Profile = props => {
 		</div>
 		<div>
 			<button><a href='/posting'>+</a></button>
-			{itemz}
+			{sales}{itemz}
 		</div>
     </div>
   )
