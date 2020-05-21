@@ -70,16 +70,15 @@ const Content = props => {
    })
  }
 
+
  //calls the ListAPI on line 28
  useEffect(() => {
    callListAPI()
    callSaleAPI()
  }, [])
 
- //calls the SaleAPI on line 51
- // useEffect(() => {
- //   callSaleAPI()
- // }, [])
+
+
 
  useEffect(() => {
    let token = localStorage.getItem('boilerToken')
@@ -100,7 +99,8 @@ const Content = props => {
      .then(result => {
        console.log(result)
        setSecretMessage(result.message)
-       
+       setThisUser(true)
+       callAPI()
      })
    })
    .catch(err => {
@@ -108,9 +108,11 @@ const Content = props => {
      setSecretMessage('No message for YOU!')
    })
  }, [])
+
  if (!props.user) {
    return <Redirect to="/login" />
  }
+
 
   return (
     <div className="container">
