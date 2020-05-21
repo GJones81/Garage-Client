@@ -128,7 +128,7 @@ const Content = props => {
         () => <Discovery user={props.user} />
       } />
       <Route path="/posting" render={
-        () => <Posting user={props.user} />
+        () => <Posting user={props.user} item={item} sale={sale} />
       } />
     </div>
   )
