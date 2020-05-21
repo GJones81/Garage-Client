@@ -11,24 +11,20 @@ import Profile from './pages/Profile'
 import Signup from './pages/Signup'
 import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
-import Axios from 'axios'
 
-const API_URL = 'https://localhost3000/'
+
+const API_URL = 'http://localhost:3000/'
 
 const Content = props => {
-
-  let token = localStorage.getItem('boilerToken')
-
-  let [item, setItem] = useState({currentList: []})
+  let [lists, setLists] = useState([])
   let [sale, setSale] = useState({currentSales: []})
-  let [thisUser, setThisUser] = useState(false)
-  let [secretMessage, setSecretMessage] = useState('')
+  
 
   //calls the List model to retrieve the List data 
   const callListAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('ListAPI Function running')
-   fetch('http://localhost:3000/list', {
+   fetch(API_URL+ 'list', { 
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
@@ -40,7 +36,7 @@ const Content = props => {
    })
    .then(listData => {
      console.log('ListAPI', listData)
-     setItem(listData)
+     setLists(listData.currentLists)
    })
    .catch(err => {
      console.log(err, 'Error fetching the ListAPI')
@@ -51,7 +47,7 @@ const Content = props => {
  const callSaleAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('SaleAPI Function running')
-   fetch('http://localhost:3000/sale', {
+   fetch(API_URL + 'sale', {
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
@@ -71,47 +67,11 @@ const Content = props => {
  }
 
 
- //calls the ListAPI on line 28
+// calls the ListAPI on line 28
  useEffect(() => {
    callListAPI()
    callSaleAPI()
  }, [])
-
-
-
-
- useEffect(() => {
-   let token = localStorage.getItem('boilerToken')
-   console.log(token)
-   fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
-     headers: {
-       'Authorization': `Bearer ${token}`
-     }
-   })
-   .then(response => {
-     //response = token(from the server side)
-     console.log('Response', response)
-     if (!response.ok) {
-       setSecretMessage('Nice try!')
-       return
-     }
-     response.json()
-     .then(result => {
-       console.log(result)
-       setSecretMessage(result.message)
-       setThisUser(true)
-       callAPI()
-     })
-   })
-   .catch(err => {
-     console.log(err)
-     setSecretMessage('No message for YOU!')
-   })
- }, [])
-
- if (!props.user) {
-   return <Redirect to="/login" />
- }
 
 
   return (
@@ -121,7 +81,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} item={item} sale={sale}/>
+        () => <Profile user={props.user} url={API_URL} lists={lists} sale={sale}/>
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
@@ -130,7 +90,13 @@ const Content = props => {
         () => <Discovery user={props.user} />
       } />
       <Route path="/posting" render={
-        () => <Posting user={props.user} item={item} sale={sale} />
+        () => <Posting 
+          user={props.user} 
+          lists={lists} 
+          sale={sale} 
+          url={API_URL} 
+          updateToken={props.updateToken}
+        />
       } />
     </div>
   )

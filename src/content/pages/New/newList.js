@@ -1,7 +1,12 @@
 import React from 'react';
 
+
 //This is a form to add a listing for a garage sale 
 const NewList = props => {
+
+   let url
+
+
     return (
         <div>
             <h5>Host a Garage Sale(Listing)</h5>

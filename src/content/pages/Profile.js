@@ -7,7 +7,9 @@ import { Redirect } from 'react-router-dom'
 
 const Profile = props => {
 
-	let itemz = props.item.currentList.map((l, i) => {
+	
+
+	let itemz = props.lists.map((l, i) => {
 		return (
 			<div key={i}>
 				<p>{l.listTitle}</p>
@@ -23,6 +25,9 @@ const Profile = props => {
 			</div>
 		)
 	})
+	if (!props.user) {
+		return <Redirect to="/login" />
+ 	}
 
   return (
     <div>
