@@ -11,24 +11,21 @@ import Profile from './pages/Profile'
 import Signup from './pages/Signup'
 import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
-import Axios from 'axios'
 
-const API_URL = 'https://localhost:3000/'
+const API_URL = 'http://localhost:3000/'
+
 
 const Content = props => {
 
-  let token = localStorage.getItem('boilerToken')
-
   let [lists, setLists] = useState([])
   let [sale, setSale] = useState({currentSales: []})
-  let [thisUser, setThisUser] = useState(false)
-  let [secretMessage, setSecretMessage] = useState('')
+  
 
   //calls the List model to retrieve the List data 
   const callListAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('ListAPI Function running')
-   fetch('http://localhost:3000/list', {
+   fetch(API_URL+ 'list', { 
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
@@ -51,7 +48,7 @@ const Content = props => {
  const callSaleAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('SaleAPI Function running')
-   fetch('http://localhost:3000/sale', {
+   fetch(API_URL + 'sale', {
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
@@ -71,46 +68,11 @@ const Content = props => {
  }
 
 
- //calls the ListAPI on line 28
+// calls the ListAPI on line 28
  useEffect(() => {
    callListAPI()
    callSaleAPI()
  }, [])
-
-
-
-
- useEffect(() => {
-   let token = localStorage.getItem('boilerToken')
-   console.log(token)
-   fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
-     headers: {
-       'Authorization': `Bearer ${token}`
-     }
-   })
-   .then(response => {
-     //response = token(from the server side)
-     console.log('Response', response)
-     if (!response.ok) {
-       setSecretMessage('Nice try!')
-       return
-     }
-     response.json()
-     .then(result => {
-       console.log(result)
-       setSecretMessage(result.message)
-       setThisUser(true)
-       //callAPI()
-       callListAPI()
-       callSaleAPI()
-     })
-   })
-   .catch(err => {
-     console.log(err)
-     setSecretMessage('No message for YOU!')
-   })
- }, [])
-
 
 
 
@@ -130,7 +92,14 @@ const Content = props => {
         () => <Discovery user={props.user} />
       } />
       <Route path="/posting" render={
-        () => <Posting user={props.user} lists={lists} sale={sale} />
+        () => <Posting 
+          user={props.user} 
+          lists={lists} 
+          sale={sale} 
+          url={API_URL} 
+          updateToken={props.updateToken}
+        />
+
       } />
     </div>
   )

@@ -28,6 +28,9 @@ const Profile = props => {
 			</div>
 		)
 	})
+	if (!props.user) {
+		return <Redirect to="/login" />
+ 	}
 
 	if (!props.user) {
 		return <Redirect to="/login" />
