@@ -2,8 +2,9 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 
 import NewItem from './New/NewItem'
-import NewLists from './New/NewLists'
 import EditItem from './New/EditItem'
+import NewLists from './New/NewLists'
+import EditList from './New/EditList'
 
 
 //NOTE: Should discuss with Guy, maybe a suggestion, but do we want to render the edit form 
@@ -26,6 +27,7 @@ const Posting = props => {
         .then(() => {
             console.log('delete was successful')
             //refresh the API by calling it?? yes??
+            props.refresh()
         })
     }
 
@@ -42,7 +44,8 @@ const Posting = props => {
                 <p>{x.condition}</p>
                 
                 <p>Edit an Item</p>
-                <EditItem url = { props.url} token={props.updateToken} list={l} item={x}/>
+                <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}
+                />
                 <button onClick={() => handleDelete(x._id, l._id)}>Delete</button>
             </div> 
             )
@@ -50,8 +53,10 @@ const Posting = props => {
         return(
             <div key={i}>
                 <h2>{l.listTitle}</h2>
+                <p>Edit the list title</p>
+                <EditList url={ props.url } token={props.updateToken} refresh={props.refresh} lists={l}/>
                 <p>Add a New Item to a List</p>
-                <NewItem  url = { props.url} token={props.updateToken} list={l} />
+                <NewItem  url = { props.url} token={props.updateToken} list={l} refresh={props.refresh} />
                 {itemz}
             </div>
         )
@@ -63,7 +68,7 @@ const Posting = props => {
         <div>
               <div className="addForms">
                 <h3>Create A New List</h3>
-                <NewLists url = { props.url} />
+                <NewLists url = { props.url} token={props.updateToken} refresh={props.refresh} />
             </div>
             <div>
                 {list}
