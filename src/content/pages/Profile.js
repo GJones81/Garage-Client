@@ -12,20 +12,30 @@ import { Redirect } from 'react-router-dom'
 
 const Profile = props => {
 
-	const handleEdit = (listId) => {
-		let token = localStorage.getItem('boilerToken')
-		fetch(props.url + 'list' + listId, {
-			method: 'PUT',
-			body: JSON.stringify({listId}),
-			headers: {
-				'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-			}
-		})
-		.then(() => {
-			console.log('edit was successful')
-		}) 
-	}
+
+	// const handleEdit = (listId) => {
+	// 	let token = localStorage.getItem('boilerToken')
+	// 	fetch(props.url + 'list' + listId, {
+	// 		method: 'PUT',
+	// 		body: JSON.stringify({listId}),
+	// 		headers: {
+	// 			'Authorization': `Bearer ${token}`,
+    //             'Content-Type': 'application/json'
+	// 		}
+	// 	})
+	// 	.then(() => {
+	// 		console.log('edit was successful')
+	// 	}) 
+	// }
+
+	// let itemz = props.lists.map((l, i) => {
+	// 	return (
+	// 		<div key={i}>
+	// 			<p>{l.listTitle}</p>
+	// 		</div>
+	// 	)
+	// })
+
 
 	let sales = props.sale.currentSales.map((s, j) => {
 		if (s.list)

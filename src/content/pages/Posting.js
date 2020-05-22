@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 
 import NewItem from './New/NewItem'
 import NewList from './New/NewList'
+import EditItem from './New/EditItem'
 
 
 //NOTE: Should discuss with Guy, maybe a suggestion, but do we want to render the edit form 
@@ -10,8 +11,6 @@ import NewList from './New/NewList'
 
 //fetch calls edit/delete should go here 
 const Posting = props => {
-
-
     // is the button in the right place?? fix tomorrow
     const handleDelete = (itemId, listId) => {
         let token = localStorage.getItem('boilerToken')
@@ -34,13 +33,16 @@ const Posting = props => {
         let itemz = l.item.map((x, y) => {
             return (
             <div key={y}>
+                <img src={x.image}></img>
                 <p>Item</p>
                 <p>{x.name}</p>
                 <p>Price</p>
                 <p>${x.price}</p>
                 <p>Condition</p>
                 <p>{x.condition}</p>
-                <img src={x.image}></img>
+                
+                <p>Edit an Item</p>
+                <EditItem url = { props.url} token={props.updateToken} list={l} item={x}/>
                 <button onClick={() => handleDelete(x._id, l._id)}>Delete</button>
             </div> 
             )
@@ -48,6 +50,8 @@ const Posting = props => {
         return(
             <div key={i}>
                 <h2>{l.listTitle}</h2>
+                <p>Add a New Item to a List</p>
+                <NewItem  url = { props.url} token={props.updateToken} list={l} />
                 {itemz}
             </div>
         )
@@ -57,19 +61,20 @@ const Posting = props => {
     return (
         //As a suggestion maybe we should have two different forms and use routers??
         <div>
-             <div className="addForms">
+              {/* <div className="addForms">
                 <h3>Create A New List</h3>
                 <NewList url = { props.url} />
-            </div>
-            <div className="addForms">
-                <h3>Add New Items To Your List</h3>
-                <NewItem  url = { props.url} token = {props.updateToken}/>
-            </div>
+            </div> */}
+            {/* <div className="addForms"> */}
+                {/* <h3>Add New Items To Your List</h3>
+                <NewItem  url = { props.url} token={props.updateToken} lists={props.list} />
+            </div> */}
             <div>
-                
                 {list}
-                
             </div>
+            {/* <div>
+                <EditItem url = { props.url} token={props.updateToken} lists={props.lists} />
+            </div> */}
         </div>
     )
 }
