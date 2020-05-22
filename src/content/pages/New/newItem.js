@@ -36,6 +36,9 @@ const NewItem = props => {
                 setCondition('')
                 
             })
+            .catch(err => {
+                console.log('Error', err)
+            })
     }
 
 

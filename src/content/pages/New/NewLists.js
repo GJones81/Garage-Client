@@ -21,8 +21,11 @@ const NewLists = props => {
         })
         .then(response => {
             console.log('Empty list was created')
-            //props.refresh()
+            props.refresh()
             setListTitle('')
+        })
+        .catch(err => {
+            console.log('Error', err)
         }) 
     }
 
