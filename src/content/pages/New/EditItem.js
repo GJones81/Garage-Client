@@ -8,7 +8,10 @@ const EditItem = props => {
     let [price, setPrice] = useState(props.list.item.price)
     let [image, setImage] = useState(props.list.item.image)
     let [condition, setCondition] = useState(props.list.item.condition)
+    let [listTitle, setListTitle] = useState(props.list.listTitle)
+    let [listId, setListId] = useState(props.list._id)
     let [itemId, setItemId] = useState(props.item._id)
+    let [list, setList] = useState(props.list)
 
 
     //POST list/item Adds a new item to an existing list

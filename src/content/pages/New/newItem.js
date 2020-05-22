@@ -29,6 +29,7 @@ const NewItem = props => {
             .then(response => {
                 console.log('item was created')
                 //recall the API to populate with new info that was given(typed)
+                props.refresh()
                 setName('')
                 setPrice('')
                 setImage('')
