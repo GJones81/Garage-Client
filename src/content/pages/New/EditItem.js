@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+
+
 //This is the form to add a new item to the list 
 const EditItem = props => {
     let [name, setName] = useState(props.list.item.name)
@@ -16,7 +18,7 @@ const EditItem = props => {
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()
-        fetch(props.url + 'list/item' + itemId, {
+        fetch(props.url + 'list/item' + props.item._id, {
             method: 'PUT',
             body: JSON.stringify({
                 listId: props.list._id,

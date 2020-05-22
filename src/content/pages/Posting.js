@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 
 import NewItem from './New/NewItem'
-import NewList from './New/NewLists'
+import NewLists from './New/NewLists'
 import EditItem from './New/EditItem'
 
 
@@ -61,20 +61,13 @@ const Posting = props => {
     return (
         //As a suggestion maybe we should have two different forms and use routers??
         <div>
-              {/* <div className="addForms">
+              <div className="addForms">
                 <h3>Create A New List</h3>
-                <NewList url = { props.url} />
-            </div> */}
-            {/* <div className="addForms"> */}
-                {/* <h3>Add New Items To Your List</h3>
-                <NewItem  url = { props.url} token={props.updateToken} lists={props.list} />
-            </div> */}
+                <NewLists url = { props.url} />
+            </div>
             <div>
                 {list}
             </div>
-            {/* <div>
-                <EditItem url = { props.url} token={props.updateToken} lists={props.lists} />
-            </div> */}
         </div>
     )
 }
