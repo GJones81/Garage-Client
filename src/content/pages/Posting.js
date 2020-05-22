@@ -11,6 +11,7 @@ import NewList from './New/NewList'
 //fetch calls edit/delete should go here 
 const Posting = props => {
 
+
     // is the button in the right place?? fix tomorrow
     const handleDelete = (itemId, listId) => {
         let token = localStorage.getItem('boilerToken')
@@ -65,6 +66,7 @@ const Posting = props => {
                 <NewItem  url = { props.url} token = {props.updateToken}/>
             </div>
             <div>
+                
                 {list}
                 
             </div>

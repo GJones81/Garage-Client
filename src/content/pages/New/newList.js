@@ -1,6 +1,13 @@
 import React from 'react';
 
 
+// POST /list
+
+// PUT list/:id
+
+// DELETE list/:id
+
+
 //This is a form to add a listing for a garage sale 
 const NewList = props => {
 
