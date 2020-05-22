@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
 
-
-// PUT list/item/:id
-
-// DELETE list/item/:id
-
-
 //This is the form to add a new item to the list 
 const NewItem = props => {
     let [name, setName] = useState('')

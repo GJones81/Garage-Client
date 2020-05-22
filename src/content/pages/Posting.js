@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 
 import NewItem from './New/NewItem'
-import NewList from './New/NewList'
+import NewList from './New/NewLists'
 import EditItem from './New/EditItem'
 
 

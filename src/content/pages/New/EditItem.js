@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 
-
-
-// PUT list/item/:id
-
 //This is the form to add a new item to the list 
 const EditItem = props => {
     let [name, setName] = useState(props.list.item.name)
