@@ -32,7 +32,7 @@ const EditList = props => {
     return (
         <div>
             <div className='listForm'>
-                <h5>Edit your list title</h5>
+                <h5>Edit List Title</h5>
                     <form onSubmit={handleSubmit}>
                         <label>New Title:</label>
                             <input type='text' name='listTitle' onChange={e => setListTitle(e.target.value)} />
