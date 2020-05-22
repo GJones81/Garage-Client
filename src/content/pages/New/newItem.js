@@ -9,7 +9,6 @@ const NewItem = props => {
     // let [listTitle, setListTitle] = useState('')
 
     //POST list/item Adds a new item to an existing list
-
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()
@@ -17,7 +16,6 @@ const NewItem = props => {
             method: 'POST',
             body: JSON.stringify({
                 _id: props.list._id,
-                listTitle: props.list.listTitle,
                 name,
                 price,
                 image,

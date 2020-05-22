@@ -9,10 +9,7 @@ import React from 'react';
 
 
 //This is a form to add a listing for a garage sale 
-const NewList = props => {
-
-   let url
-
+const NewLists = props => {
 
     return (
         <div>
@@ -31,4 +28,4 @@ const NewList = props => {
     )
 }
 
-export default NewList
+export default NewLists
