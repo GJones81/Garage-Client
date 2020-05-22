@@ -23,7 +23,7 @@ const EditItem = props => {
         fetch(props.url + 'list/item' + itemId, {
             method: 'PUT',
             body: JSON.stringify({
-               listId: props.list._id,
+                listId: props.list._id,
                 name,
                 price,
                 image,

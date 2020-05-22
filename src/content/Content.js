@@ -12,6 +12,7 @@ import Signup from './pages/Signup'
 import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
 
+
 const API_URL = 'http://localhost:3000/'
 
 
@@ -99,7 +100,6 @@ const Content = props => {
           url={API_URL} 
           updateToken={props.updateToken}
         />
-
       } />
     </div>
   )

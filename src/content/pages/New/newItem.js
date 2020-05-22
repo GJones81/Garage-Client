@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 
-
 // PUT list/item/:id
 
 // DELETE list/item/:id
@@ -15,8 +14,8 @@ const NewItem = props => {
     let [condition, setCondition] = useState('')
     // let [listTitle, setListTitle] = useState('')
 
-
     //POST list/item Adds a new item to an existing list
+
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()

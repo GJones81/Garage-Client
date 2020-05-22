@@ -11,7 +11,6 @@ import EditItem from './New/EditItem'
 
 //fetch calls edit/delete should go here 
 const Posting = props => {
-
     // is the button in the right place?? fix tomorrow
     const handleDelete = (itemId, listId) => {
         let token = localStorage.getItem('boilerToken')

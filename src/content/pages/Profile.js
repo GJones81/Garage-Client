@@ -12,29 +12,46 @@ import { Redirect } from 'react-router-dom'
 
 const Profile = props => {
 
-	let itemz = props.lists.map((l, i) => {
-		return (
-			<div key={i}>
-				<p>{l.listTitle}</p>
-			</div>
-		)
-	})
+
+	// const handleEdit = (listId) => {
+	// 	let token = localStorage.getItem('boilerToken')
+	// 	fetch(props.url + 'list' + listId, {
+	// 		method: 'PUT',
+	// 		body: JSON.stringify({listId}),
+	// 		headers: {
+	// 			'Authorization': `Bearer ${token}`,
+    //             'Content-Type': 'application/json'
+	// 		}
+	// 	})
+	// 	.then(() => {
+	// 		console.log('edit was successful')
+	// 	}) 
+	// }
+
+	// let itemz = props.lists.map((l, i) => {
+	// 	return (
+	// 		<div key={i}>
+	// 			<p>{l.listTitle}</p>
+	// 		</div>
+	// 	)
+	// })
+
 
 	let sales = props.sale.currentSales.map((s, j) => {
-		return (
-			<div key={j}>
-				<p>{s.date}</p>
-				<p>{s.address}</p>
-			</div>
-		)
+		if (s.list)
+			return (
+				<div key={j}>
+					<p>{s.list.listTitle}</p>
+					<p>{s.date}</p>
+					<p>{s.address}</p>
+				</div>
+			)
 	})
 	if (!props.user) {
 		return <Redirect to="/login" />
  	}
 
-	if (!props.user) {
-		return <Redirect to="/login" />
-	  }
+
 
   return (
     <div>
@@ -45,7 +62,7 @@ const Profile = props => {
 		</div>
 		<div>
 			<button><a href='/posting'>+</a></button>
-			{sales}{itemz}
+			{sales}
 		</div>
     </div>
   )
