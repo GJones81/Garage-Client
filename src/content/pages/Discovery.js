@@ -3,6 +3,16 @@ import GoogleMapReact from 'google-map-react';
 
 const Discovery = props => {
 
+  console.log(props.discoveries)
+  let discovery = props.discoveries.publicSales.map((d, i) =>{
+    return (
+      <div key={i}>
+        <p>Address: {d.address}</p>
+        <p>Date: {d.date}</p>
+      </div>
+    )
+  })
+
     let center = {
         lat: 59.95,
         lng: 30.33
@@ -22,7 +32,13 @@ const Discovery = props => {
             text="My Marker"
         </p>
         </GoogleMapReact>
+
+        <div>
+          { discovery }
+        </div>
       </div>
+       
+      
 
     )
 }

@@ -20,6 +20,7 @@ const Content = props => {
 
   let [lists, setLists] = useState([])
   let [sale, setSale] = useState({currentSales: []})
+  let [discoveries, setDiscoveries] = useState({publicSales:[]})
   
 
   //calls the List model to retrieve the List data 
@@ -68,16 +69,41 @@ const Content = props => {
    })
  }
 
+ //calls the Sale model, but via an unprotected route. This makes
+ //all sales available for discovery to the public
+ const callDiscoveryAPI = () => {
+  let token = localStorage.getItem('boilerToken')
+  console.log('DiscoveryAPI Function running')
+  fetch(API_URL + 'discovery', {
+    method: 'GET',
+    headers: {
+    'Authorization': `Bearer ${token}`
+    }
+  })
+  .then(discoveriesResponse => {
+    console.log('DiscoveryAPI', discoveriesResponse)
+    return discoveriesResponse.json()
+  })
+  .then(discoveriesData => {
+    console.log('DiscoveryAPI', discoveriesData)
+    setDiscoveries(discoveriesData)
+  })
+  .catch(err => {
+    console.log(err, 'Error fetching the DiscoveryAPI')
+  })
+}
 
-// calls the ListAPI on line 28
+
  useEffect(() => {
    callListAPI()
    callSaleAPI()
+   callDiscoveryAPI()
  }, [])
 
- const callBothAPI = () => {
+ const callAllAPI = () => {
    callListAPI()
    callSaleAPI()
+   callDiscoveryAPI()
  }
 
 
@@ -89,13 +115,13 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} lists={lists} sale={sale} refresh={callBothAPI} />
+        () => <Profile user={props.user} url={API_URL} lists={lists} sale={sale} refresh={callAllAPI} />
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/discovery" render={
-        () => <Discovery user={props.user} />
+        () => <Discovery user={props.user} updateToken={props.updateToken} refresh={callAllAPI} discoveries={discoveries} />
       } />
       <Route path="/posting" render={
         () => <Posting 
@@ -104,7 +130,7 @@ const Content = props => {
           sale={sale} 
           url={API_URL} 
           updateToken={props.updateToken}
-          refresh={callBothAPI}
+          refresh={callAllAPI}
         />
       } />
     </div>
