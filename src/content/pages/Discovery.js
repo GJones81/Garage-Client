@@ -12,7 +12,7 @@ const Discovery = props => {
     return (
         <div id="map" style={{ height: '500px', width: '500px' }}>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyCNsWfTlAvW9QV0iOf_3SgvmO-nG4nMiww'}}
+                bootstrapURLKeys={{ key: 'AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk'}}
                 defaultCenter={center}
                 defaultZoom={zoom}
         >

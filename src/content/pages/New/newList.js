@@ -1,9 +1,5 @@
 import React from 'react';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> aef7c2cf9a316928ee98bf9e6d7dd71f0d8ca9ad
 // POST /list
 
 // PUT list/:id
