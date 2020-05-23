@@ -16,7 +16,6 @@ import EditSale from './New/EditSale'
 const Profile = props => {
 
 	let initialId = props.lists.length ? props.lists[0]._id : ''
-	console.log(initialId)
 
 	let [ date, setDate ] = useState('')
 	let [ address, setAddress ] = useState('')

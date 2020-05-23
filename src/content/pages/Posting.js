@@ -90,7 +90,6 @@ const Posting = props => {
         //As a suggestion maybe we should have two different forms and use routers??
         <div>
               <div className="addForms">
-                <h3>Create A New List</h3>
                 <NewLists url = { props.url} token={props.updateToken} refresh={props.refresh} />
             </div>
             <div>
