@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 
 
-// PUT list/item/:id
-
 //This is the form to add a new item to the list 
 const EditItem = props => {
     let [name, setName] = useState(props.list.item.name)
@@ -20,7 +18,7 @@ const EditItem = props => {
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()
-        fetch(props.url + 'list/item' + itemId, {
+        fetch(props.url + 'list/item/' + itemId, {
             method: 'PUT',
             body: JSON.stringify({
                 listId: props.list._id,
@@ -37,6 +35,7 @@ const EditItem = props => {
             .then(response => {
                 console.log('item was created')
                 //recall the API to populate with new info that was given(typed)
+                props.refresh()
                 setName('')
                 setPrice('')
                 setImage('')
@@ -79,7 +78,7 @@ const EditItem = props => {
             <div className="itemForm">
                 <button onClick={() => showWidget(widget)}>Upload</button>
                 <form onSubmit={handleSubmit}>
-                    <p>Editing {props.item.name}</p>
+                    <p>Edit: {props.item.name}</p>
                     <label>Image:</label>
                         <input type="text" name="image" onChange={e => setImage(e.target.value)} />
                     <label>Name:</label>

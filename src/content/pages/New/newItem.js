@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
 
-
-// PUT list/item/:id
-
-// DELETE list/item/:id
-
-
 //This is the form to add a new item to the list 
 const NewItem = props => {
     let [name, setName] = useState('')
@@ -15,7 +9,6 @@ const NewItem = props => {
     // let [listTitle, setListTitle] = useState('')
 
     //POST list/item Adds a new item to an existing list
-
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()
@@ -23,7 +16,6 @@ const NewItem = props => {
             method: 'POST',
             body: JSON.stringify({
                 _id: props.list._id,
-                listTitle: props.list.listTitle,
                 name,
                 price,
                 image,
@@ -37,11 +29,15 @@ const NewItem = props => {
             .then(response => {
                 console.log('item was created')
                 //recall the API to populate with new info that was given(typed)
+                props.refresh()
                 setName('')
                 setPrice('')
                 setImage('')
                 setCondition('')
                 
+            })
+            .catch(err => {
+                console.log('Error', err)
             })
     }
 

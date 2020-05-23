@@ -75,6 +75,11 @@ const Content = props => {
    callSaleAPI()
  }, [])
 
+ const callBothAPI = () => {
+   callListAPI()
+   callSaleAPI()
+ }
+
 
 
   return (
@@ -84,7 +89,7 @@ const Content = props => {
         () => <Login user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile" render={
-        () => <Profile user={props.user} url={API_URL} lists={lists} sale={sale}/>
+        () => <Profile user={props.user} url={API_URL} lists={lists} sale={sale} refresh={callBothAPI} />
       } />
       <Route path="/signup" render={
         () => <Signup user={props.user} updateToken={props.updateToken} />
@@ -99,6 +104,7 @@ const Content = props => {
           sale={sale} 
           url={API_URL} 
           updateToken={props.updateToken}
+          refresh={callBothAPI}
         />
       } />
     </div>
