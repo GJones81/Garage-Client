@@ -1,13 +1,9 @@
 import React from 'react';
 
-// POST /list
-
-// PUT list/:id
-
-// DELETE list/:id
+//THIS FILE IS COMPLETELY POINTLESS. WE ACCIDENTALLY
+//CREATED ANOTHER COMPONENT TO FILL ITS ROLE
 
 
-//This is a form to add a listing for a garage sale 
 const NewList = props => {
 
    let url
