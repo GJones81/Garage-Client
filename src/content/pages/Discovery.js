@@ -14,22 +14,14 @@ const Discovery = props => {
     )
   })
 
-      let Header = styled("header")`
-      width: 100vw;
-      height: 80px;
-      border-bottom: 2px solid #222;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    `;
+      
 
     let Layout = () => {
       return (
         <>
-          <Header>
-            <h1>Mapbox GL Components</h1>
-          </Header>
+            <h1>Look for Sales</h1>
           <main>
+            
             <MapboxGLMap />
           </main>
         </>

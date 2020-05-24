@@ -3,9 +3,9 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const styles = {
-  width: "100vw",
-  height: "calc(100vh - 80px)",
-  position: "absolute"
+  width: "100%",
+  height: "400px",
+  
 };
 
 const MapboxGLMap = () => {
@@ -14,7 +14,7 @@ const MapboxGLMap = () => {
 
   useEffect(() => {
     mapboxgl.accessToken =
-      "pk.eyJ1IjoiYnJpYW5iYW5jcm9mdCIsImEiOiJsVGVnMXFzIn0.7ldhVh3Ppsgv4lCYs65UdA";
+      "pk.eyJ1Ijoic2p5OTUiLCJhIjoiY2thbGw4dnd4MTJ6czJycDR1aWU5ajd0dCJ9.EbJoQtqZr47OEbEKLgJCEw";
     const initializeMap = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
