@@ -59,16 +59,23 @@ const Posting = props => {
         let itemz = l.item.map((x, y) => {
             return (
             <div key={y}>
-                <img src={x.image}></img>
-                <p>Item</p>
-                <p>{x.name}</p>
-                <p>Price</p>
-                <p>${x.price}</p>
-                <p>Condition</p>
-                <p>{x.condition}</p>
-                <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}
-                />
-                <Button color='danger' onClick={() => handleItemDelete(x._id, l._id)}>Delete This Item</Button>
+                <Card>
+                    <CardBody>
+                        <CardTitle><p>Item</p></CardTitle>
+                            <CardSubtitle><p>{x.name}</p></CardSubtitle>
+                    </CardBody>
+                        <img src={x.image}></img>
+                    <CardBody>
+                        <CardText>
+                            <p>Price</p>
+                            <p>${x.price}</p>
+                            <p>Condition</p>
+                            <p>{x.condition}</p>
+                        </CardText>
+                            <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}/>
+                            <Button color='danger' onClick={() => handleItemDelete(x._id, l._id)}>Delete This Item</Button>
+                    </CardBody>  
+                </Card>
             </div> 
             )
         })
