@@ -1,8 +1,9 @@
-import React from 'react';
-import GoogleMapReact from 'google-map-react';
+import React, { Component } from 'react';
+import styled from 'styled-components'
+
+import MapboxGLMap from './MapboxGLMap'
 
 const Discovery = props => {
-
   console.log(props.discoveries)
   let discovery = props.discoveries.publicSales.map((d, i) =>{
     return (
@@ -13,33 +14,38 @@ const Discovery = props => {
     )
   })
 
-    let center = {
-        lat: 59.95,
-        lng: 30.33
-    }
-    let zoom =  11
+      let Header = styled("header")`
+      width: 100vw;
+      height: 80px;
+      border-bottom: 2px solid #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `;
+
+    let Layout = () => {
+      return (
+        <>
+          <Header>
+            <h1>Mapbox GL Components</h1>
+          </Header>
+          <main>
+            <MapboxGLMap />
+          </main>
+        </>
+      );
+    };
+
 
     return (
-        <div id="map" style={{ height: '500px', width: '500px' }}>
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk'}}
-                defaultCenter={center}
-                defaultZoom={zoom}
-        >
-          <p>
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-        </p>
-        </GoogleMapReact>
-
+      <div>
+        <div>
+          <Layout />
+        </div>
         <div>
           { discovery }
         </div>
       </div>
-       
-      
-
     )
 }
 

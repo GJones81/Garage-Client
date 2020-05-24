@@ -11,6 +11,7 @@ const EditItem = props => {
     let [ imageUrl, setImageUrl ] = useState('')
     let [itemId, setItemId] = useState(props.item._id)
     
+
     //POST list/item Adds a new item to an existing list
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')

@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
 
 
-//Need to add this as a Router i think on Profile.js and import it??
-//<EditSale url = {props.url} token = {props.updateToken} sale={s}/>
-//I dont think there is a name for sale, b/c sale is 
-// only the date and address, tech. listTitle is the sale name 
 
 const EditSale = props => {
 
@@ -16,7 +12,7 @@ const EditSale = props => {
     let [ date, setDate ] = useState(props.sale.date)
     let [ list, setList ] = useState(initialId)
     
-    //am i targeting this right, because sale
+    
     const submitEdit = e => {
         e.preventDefault()
         console.log('hitting the PUT route for editing a sale ')
