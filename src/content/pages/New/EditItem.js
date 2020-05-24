@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 
 
@@ -81,25 +81,37 @@ const EditItem = props => {
 
     return (
         <div>
-            <Button color='danger' onClick={toggle}>Edit this item</Button>
+            <Button color='primary' onClick={toggle}>Edit this item</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit an Item</ModalHeader>
                 <ModalBody>
                     <div className="itemForm">
-                        <button onClick={() => showWidget(widget)}>Upload</button>
-                        <form onSubmit={handleSubmit}>
-                            <p>Edit: {props.item.name}</p>
-                            <label>Image:</label>
-                                <input type="hidden" name="image" value={imageUrl} />
-                                <img src={imageUrl} name='image' /> 
-                            <label>Name:</label>
-                                <input type="text" name="name" onChange={e => setName(e.target.value)}/>
-                            <label>Condition:</label>
-                                <input type="number" name="condition" onChange={e => setCondition(e.target.value)}/>
-                            <label>Price:</label>
-                                <input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
-                            <input type="submit" />
-                        </form>  
+                        <Button color='primary' onClick={() => showWidget(widget)}>Upload</Button>
+                        <Form onSubmit={handleSubmit}>
+                            <FormGroup>
+                                <p>Edit: {props.item.name}</p>
+                                    <Input type="hidden" name="image" value={imageUrl} />
+                                    <img src={imageUrl} name='image' /> 
+                                <Label>Name:</Label>
+                                    <Input type="text" name="name" onChange={e => setName(e.target.value)}/>
+                                <Label for='condition'>Rate the Condition of the Item</Label>
+                                    <Input type="select" name="condition" onChange={e => setCondition(e.target.value)}>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </Input>
+                                <Label>Price:</Label>
+                                    <Input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
+                                <Button color='primary' type="submit">Edit this Item</Button>
+                            </FormGroup>
+                        </Form>  
                     </div>
                     <br />
                     <Button color='success' onClick={toggleNested}>Show Nested Modal</Button>
