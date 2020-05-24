@@ -87,15 +87,14 @@ const NewItem = props => {
 
     return (
         <div>
-            <Button color='danger' onClick={toggle}>Add an Item to the List</Button>
+            <Button color='info' onClick={toggle}>Add an Item to the List</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Add an Item</ModalHeader>
                 <ModalBody>
                      <div className="itemForm">
-                        <button onClick={() => showWidget(widget)}>Upload</button>
+                        <button onClick={() => showWidget(widget)}>Upload An Image</button>
                         <form onSubmit={handleSubmit}>
                         <label>New Item for :{props.list.listTitle}</label>
-                            <label>Image:</label>
                                 <input type="hidden" name="image" value={imageUrl} />
                                 <img src={imageUrl} name='image' /> 
                             <label>Name:</label>
@@ -105,8 +104,16 @@ const NewItem = props => {
                             <label>Price:</label>
                                 <input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
                             <input type="submit" />
+                      
+                        <ModalFooter>
+                            <Button color='primary'  onClick={toggle}>Add the Item</Button>{''}
+                            <Button color='secondary' onClick={toggle}>Cancel</Button>
+                        </ModalFooter>
                         </form>
                         </div>
+
+
+
                         <br />
                         <Button color='success' onClick={toggleNested}>Show Nested Modal</Button>
                         <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
@@ -118,10 +125,7 @@ const NewItem = props => {
                         </ModalFooter>
                     </Modal>
                 </ModalBody>
-                <ModalFooter>
-                    <Button color='primary' onClick={toggle}>Do Something</Button>{''}
-                    <Button color='secondary' onClick={toggle}>Cancel</Button>
-                </ModalFooter>
+                
             </Modal>
         </div>
     )
