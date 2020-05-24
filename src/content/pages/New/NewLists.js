@@ -61,7 +61,7 @@ const NewLists = props => {
                                     <input type='submit' />
                             </form>
                         </div>
-                    <br />
+                        <br />
                     <Button color="success" onClick={toggleNested}>Show Nested Modal?</Button>
                     <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
                         <ModalHeader>Nested Modal Title</ModalHeader>
