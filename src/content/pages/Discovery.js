@@ -4,12 +4,10 @@ import styled from 'styled-components'
 import MapboxGLMap from './MapboxGLMap'
 
 const Discovery = props => {
-
   
-
   let discovery = props.discoveries.publicSales.map((d, i) =>{
     console.log(props.discoveries)
-    let itemz = d.list.item.map((x, y) => {
+    let items = d.list.item.map((x, y) => {
         return (
         <div key={y}>
             <img src={x.image}></img>
@@ -26,7 +24,7 @@ const Discovery = props => {
           <div key={i}>
           <p>Address: {d.address}</p>
           <p>Date: {d.date}</p>
-            {itemz}
+            { items }
         </div>
     )
 })

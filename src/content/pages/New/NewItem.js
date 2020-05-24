@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Form, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup } from 'reactstrap'
 
 //This is the form to add a new item to the list 
 const NewItem = props => {
@@ -91,26 +91,39 @@ const NewItem = props => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Add an Item</ModalHeader>
                 <ModalBody>
-                     <div className="itemForm">
-                        <button onClick={() => showWidget(widget)}>Upload An Image</button>
-                        <form onSubmit={handleSubmit}>
-                        <label>New Item for :{props.list.listTitle}</label>
-                                <input type="hidden" name="image" value={imageUrl} />
-                                <img src={imageUrl} name='image' /> 
-                            <label>Name:</label>
-                                <input type="text" name="name" onChange={e => setName(e.target.value)}/>
-                            <label>Condition:</label>
-                                <input type="number" name="condition" onChange={e => setCondition(e.target.value)}/>
-                            <label>Price:</label>
-                                <input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
-                            <input type="submit" />
-                      
-                        <ModalFooter>
-                            <Button color='primary'  onClick={toggle}>Add the Item</Button>{''}
-                            <Button color='secondary' onClick={toggle}>Cancel</Button>
-                        </ModalFooter>
-                        </form>
-                        </div>
+                    <div className="itemForm">
+                        <Button color='primary' onClick={() => showWidget(widget)}>Upload An Image</Button>
+                        <Form onSubmit={handleSubmit}>
+                            <FormGroup>
+                                <Label>New Item for :{props.list.listTitle}</Label>
+                                        <Input type="hidden" name="image" value={imageUrl} />
+                                        <img src={imageUrl} name='image' /> 
+                                    <Label>Name:</Label>
+                                        <Input type="text" name="name" onChange={e => setName(e.target.value)}/>
+                                    <Label for='condition'>Rate the Condition of the Item</Label>
+                                        <Input type="select" name="condition" onChange={e => setCondition(e.target.value)}>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                        </Input>
+                                    <Label>Price:</Label>
+                                        <Input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
+                                    <Button color='primary' type="submit">Add the item</Button>
+                            
+                                <ModalFooter>
+                                    <Button color='primary' type="submit" onClick={toggle}>Add the Item</Button>{''}
+                                    <Button color='secondary' onClick={toggle}>Cancel</Button>
+                                </ModalFooter>
+                            </FormGroup>
+                        </Form>
+                    </div>
 
 
 
