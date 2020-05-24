@@ -2,10 +2,6 @@ import React, {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 
-//Need to add this as a Router i think on Profile.js and import it??
-//<EditSale url = {props.url} token = {props.updateToken} sale={s}/>
-//I dont think there is a name for sale, b/c sale is 
-// only the date and address, tech. listTitle is the sale name 
 
 const EditSale = props => {
 
@@ -35,7 +31,7 @@ const EditSale = props => {
       setCloseAll(true);
     }
     
-    //am i targeting this right, because sale
+    
     const submitEdit = e => {
         e.preventDefault()
         console.log('hitting the PUT route for editing a sale ')

@@ -59,9 +59,6 @@ const EditItem = props => {
             })
     }
 
-
-    
-
     let checkUploadResult = (resultEvent) => {
         
         if (resultEvent.event === 'success') {

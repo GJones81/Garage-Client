@@ -4,6 +4,8 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+// import { MapboxGLMap } from "./pages/MapboxGLMap";
+// import { Discovery } from "./pages/Discovery";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
