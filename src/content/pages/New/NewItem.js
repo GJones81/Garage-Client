@@ -7,6 +7,8 @@ const NewItem = props => {
     let [price, setPrice] = useState('')
     let [image, setImage] = useState('')
     let [condition, setCondition] = useState('')
+    let [ imageUrl, setImageUrl ] = useState('')
+
     // let [listTitle, setListTitle] = useState('')
 
     //Reactstrap states
@@ -51,6 +53,7 @@ const NewItem = props => {
                 props.refresh()
                 setName('')
                 setPrice('')
+                setImageUrl('')
                 setImage('')
                 setCondition('')
                 
@@ -66,24 +69,17 @@ const NewItem = props => {
     let checkUploadResult = (resultEvent) => {
         
         if (resultEvent.event === 'success') {
-            props.postPhoto({
-                user_id: props.currentUser.id,
-                caption: '',
-                url: resultEvent.info.secure_url
-            })
-            .then(props.history.push('/profile'))
+            setImageUrl(resultEvent.info.secure_url)
+            setImage(resultEvent.info.secure_url)
         }
     }
     
-
-
     let widget = window.cloudinary.createUploadWidget({
         cloudName: "swaggyi",
         uploadPreset: "Garage" } ,
         (error, result) => { 
             checkUploadResult(result)
         })
-
         const showWidget = (widget) => {
             widget.open()
         
@@ -100,7 +96,8 @@ const NewItem = props => {
                         <form onSubmit={handleSubmit}>
                         <label>New Item for :{props.list.listTitle}</label>
                             <label>Image:</label>
-                                <input type="text" name="image" onChange={e => setImage(e.target.value)} />
+                                <input type="hidden" name="image" value={imageUrl} />
+                                <img src={imageUrl} name='image' /> 
                             <label>Name:</label>
                                 <input type="text" name="name" onChange={e => setName(e.target.value)}/>
                             <label>Condition:</label>

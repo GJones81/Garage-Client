@@ -87,7 +87,7 @@ const Profile = props => {
 
 	let listz = props.lists.map((l, i) => {
 		return (
-			<option value = {l._id} key={i}> {l.listTitle} </option>
+			<option value = {l._id} key={i }> {l.listTitle} </option>
 		)
 	})
 

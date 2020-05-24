@@ -79,7 +79,7 @@ const Posting = props => {
                 <EditList url={ props.url } token={props.updateToken} refresh={props.refresh} lists={l}/>
                 <button onClick={() => handleListDelete(l._id)}>Delete List</button>
                 <p>Add a New Item to a List</p>
-                <NewItem  url = { props.url} token={props.updateToken} list={l} refresh={props.refresh} />
+                <NewItem  url = { props.url} user={props.user} token={props.updateToken} list={l} refresh={props.refresh} />
                 {itemz}
             </div>
         )

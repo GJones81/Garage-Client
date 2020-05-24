@@ -8,7 +8,11 @@ const EditItem = props => {
     let [price, setPrice] = useState(props.list.item.price)
     let [image, setImage] = useState(props.list.item.image)
     let [condition, setCondition] = useState(props.list.item.condition)
+    let [ imageUrl, setImageUrl ] = useState('')
     let [itemId, setItemId] = useState(props.item._id)
+    
+
+
 
     //POST list/item Adds a new item to an existing list
     const handleSubmit = e => {
@@ -36,7 +40,7 @@ const EditItem = props => {
                 setPrice('')
                 setImage('')
                 setCondition('')
-                
+                setImageUrl('')
             })
     }
 
@@ -46,17 +50,11 @@ const EditItem = props => {
     let checkUploadResult = (resultEvent) => {
         
         if (resultEvent.event === 'success') {
-            props.postPhoto({
-                user_id: props.currentUser.id,
-                caption: '',
-                url: resultEvent.info.secure_url
-            })
-            .then(props.history.push('/profile'))
-        }
+            setImageUrl(resultEvent.info.secure_url)
+            setImage(resultEvent.info.secure_url)
+        }  
     }
     
-
-
     let widget = window.cloudinary.createUploadWidget({
         cloudName: "swaggyi",
         uploadPreset: "Garage" } ,
@@ -76,7 +74,8 @@ const EditItem = props => {
                 <form onSubmit={handleSubmit}>
                     <p>Edit: {props.item.name}</p>
                     <label>Image:</label>
-                        <input type="text" name="image" onChange={e => setImage(e.target.value)} />
+                        <input type="hidden" name="image" value={imageUrl} />
+                        <img src={imageUrl} name='image' /> 
                     <label>Name:</label>
                         <input type="text" name="name" onChange={e => setName(e.target.value)}/>
                     <label>Condition:</label>
