@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 
 
@@ -10,7 +11,23 @@ const EditItem = props => {
     let [condition, setCondition] = useState(props.list.item.condition)
     let [ imageUrl, setImageUrl ] = useState('')
     let [itemId, setItemId] = useState(props.item._id)
-    
+
+    //Reactstrap states
+    let [modal, setModal] = useState(false)
+    let [nestedModal, setNestedModal] = useState(false)
+    let [closeAll, setCloseAll] = useState(false)
+
+    //Reactstrap functions
+    let toggle = () => setModal(!modal)
+    let toggleNested = () => {
+        setNestedModal(!nestedModal)
+        setCloseAll(false)
+    }
+
+    let toggleAll = () => {
+        setNestedModal(!nestedModal)
+        setCloseAll(true)
+    }    
 
     //POST list/item Adds a new item to an existing list
     const handleSubmit = e => {
@@ -64,22 +81,42 @@ const EditItem = props => {
 
     return (
         <div>
-            <div className="itemForm">
-                <button onClick={() => showWidget(widget)}>Upload</button>
-                <form onSubmit={handleSubmit}>
-                    <p>Edit: {props.item.name}</p>
-                    <label>Image:</label>
-                        <input type="hidden" name="image" value={imageUrl} />
-                        <img src={imageUrl} name='image' /> 
-                    <label>Name:</label>
-                        <input type="text" name="name" onChange={e => setName(e.target.value)}/>
-                    <label>Condition:</label>
-                        <input type="number" name="condition" onChange={e => setCondition(e.target.value)}/>
-                    <label>Price:</label>
-                        <input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
-                    <input type="submit" />
-                </form>  
-            </div>
+            <Button color='danger' onClick={toggle}>Edit this item</Button>
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>Edit an Item</ModalHeader>
+                <ModalBody>
+                    <div className="itemForm">
+                        <button onClick={() => showWidget(widget)}>Upload</button>
+                        <form onSubmit={handleSubmit}>
+                            <p>Edit: {props.item.name}</p>
+                            <label>Image:</label>
+                                <input type="hidden" name="image" value={imageUrl} />
+                                <img src={imageUrl} name='image' /> 
+                            <label>Name:</label>
+                                <input type="text" name="name" onChange={e => setName(e.target.value)}/>
+                            <label>Condition:</label>
+                                <input type="number" name="condition" onChange={e => setCondition(e.target.value)}/>
+                            <label>Price:</label>
+                                <input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
+                            <input type="submit" />
+                        </form>  
+                    </div>
+                    <br />
+                    <Button color='success' onClick={toggleNested}>Show Nested Modal</Button>
+                    <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
+                        <ModalHeader>Nested Modal title</ModalHeader>
+                        <ModalBody>Stuff and things</ModalBody>
+                        <ModalFooter>
+                            <Button color='primary' onClick={toggleNested}>Done</Button>{''}
+                            <Button color='secondary' onClick={toggleAll}>All Done</Button>
+                        </ModalFooter>
+                    </Modal>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color='primary' onClick={toggle}>Do something</Button>{''}
+                    <Button color='secondary' onClick={toggle}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
         </div>
     )
 }

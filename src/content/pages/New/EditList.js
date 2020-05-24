@@ -1,8 +1,27 @@
 import React, { useState } from 'react'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 const EditList = props => {
     let [listTitle, setListTitle] = useState('')
     let [listId, setListId] = useState(props.lists._id)
+
+    //Reactstrap states
+    const [modal, setModal] = useState(false);
+    const [nestedModal, setNestedModal] = useState(false);
+    const [closeAll, setCloseAll] = useState(false);
+
+    //Reactstrap functions
+    const toggle = () => setModal(!modal);
+
+    const toggleNested = () => {
+        setNestedModal(!nestedModal);
+        setCloseAll(false);
+    }
+
+    const toggleAll = () => {
+        setNestedModal(!nestedModal);
+        setCloseAll(true);
+    }
 
         const handleSubmit = e => {
             let token = localStorage.getItem('boilerToken')
@@ -31,19 +50,35 @@ const EditList = props => {
 
     return (
         <div>
-            <div className='listForm'>
-                <h5>Edit List Title</h5>
-                    <form onSubmit={handleSubmit}>
-                        <label>New Title:</label>
-                            <input type='text' name='listTitle' onChange={e => setListTitle(e.target.value)} />
-                            <input type='submit' />
-
-                    </form>
-
-            </div>
+            <Button color="danger" onClick={toggle}>Edit this List</Button>
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>Edit the Title of this List</ModalHeader>
+                <ModalBody>
+                    <div className='listForm'>
+                        <h5>Edit List Title</h5>
+                            <form onSubmit={handleSubmit}>
+                                <label>New Title:</label>
+                                    <input type='text' name='listTitle' onChange={e => setListTitle(e.target.value)} />
+                                    <input type='submit' />
+                            </form>
+                    </div>
+                    <br />
+                    <Button color="success" onClick={toggleNested}>Show Nested Modal</Button>
+                    <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
+                        <ModalHeader>Nested Modal title</ModalHeader>
+                        <ModalBody>Stuff and things</ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={toggleNested}>Done</Button>{' '}
+                            <Button color="secondary" onClick={toggleAll}>All Done</Button>
+                        </ModalFooter>
+                    </Modal>
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
+                    <Button color="secondary" onClick={toggle}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
         </div>
-
-
     )
 }
 

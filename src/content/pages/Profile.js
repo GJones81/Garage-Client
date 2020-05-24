@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { Redirect, } from 'react-router-dom'
 
 // the import below is made in the attempt to make the code cleaner
@@ -21,6 +22,24 @@ const Profile = props => {
 	let [ address, setAddress ] = useState('')
 	let [ list, setList ] = useState(initialId)
 	console.log(props.lists.length ? props.lists[0]._id : 'empty')
+
+	//Reactstrap states
+	const [modal, setModal] = useState(false);
+	const [nestedModal, setNestedModal] = useState(false);
+	const [closeAll, setCloseAll] = useState(false)
+
+	//Reactstrap functions
+	const toggle = () => setModal(!modal);
+
+	const toggleNested = () => {
+	  setNestedModal(!nestedModal);
+	  setCloseAll(false);
+	}
+
+	const toggleAll = () => {
+	  setNestedModal(!nestedModal);
+	  setCloseAll(true);
+	}
 
 	const submitSale = e => {
 		console.log(list)
@@ -119,20 +138,37 @@ const Profile = props => {
 			<img src={props.user.pic} alt={props.user.firstname} />
 			
 		</div>
+			<Button color="danger" onClick={toggle}>Create a Sale</Button>
+      		<Modal isOpen={modal} toggle={toggle}>
+        		<ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        		<ModalBody>
+					<form onSubmit={submitSale}>
+						<p><strong>Create a Sale</strong></p>
+						<label>Date</label>
+						<input type='text' name='date' onChange={e => setDate(e.target.value)} />
+						<label>Address</label>
+						<input type='text' name='address' onChange={e => setAddress(e.target.value)} />
+						<label>list</label>
+						<select onChange={handleChange}> {listz} </select>
+						<button type="submit">Submit</button>
+					</form>
+					<br />
+					<Button color="success" onClick={toggleNested}>Show Nested Modal</Button>
+          			<Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
+            			<ModalHeader>Nested Modal title</ModalHeader>
+            			<ModalBody>Stuff and things</ModalBody>
+            			<ModalFooter>
+							<Button color="primary" onClick={toggleNested}>Done</Button>{' '}
+							<Button color="secondary" onClick={toggleAll}>All Done</Button>
+            			</ModalFooter>
+          			</Modal>
+        		</ModalBody>
+        		<ModalFooter>
+					<Button color="primary" onClick={toggle}>Do Something</Button>{' '}
+					<Button color="secondary" onClick={toggle}>Cancel</Button>
+        		</ModalFooter>
+      		</Modal>
 		<div>
-			<form onSubmit={submitSale}>
-				<p><strong>Create a Sale</strong></p>
-				<label>Date</label>
-				<input type='text' name='date' onChange={e => setDate(e.target.value)} />
-				<label>Address</label>
-				<input type='text' name='address' onChange={e => setAddress(e.target.value)} />
-				<label>list</label>
-				<select onChange={handleChange}> {listz} </select>
-				<button type="submit">Submit</button>
-			</form>
-		</div>
-		<div>
-			{/* <button><a href='/posting'>+</a></button> */}
 			{sales}
 		</div>
     </div>
