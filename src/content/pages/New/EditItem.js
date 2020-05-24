@@ -81,7 +81,7 @@ const EditItem = props => {
 
     return (
         <div>
-            <Button color='info' onClick={toggle}>Edit this item</Button>
+            <Button color='primary' onClick={toggle}>Edit this item</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit an Item</ModalHeader>
                 <ModalBody>

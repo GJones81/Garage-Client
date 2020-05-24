@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
+import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
 
 import NewItem from './New/NewItem'
 import EditItem from './New/EditItem'
@@ -65,11 +66,9 @@ const Posting = props => {
                 <p>${x.price}</p>
                 <p>Condition</p>
                 <p>{x.condition}</p>
-                
-                <p>Edit an Item</p>
                 <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}
                 />
-                <button onClick={() => handleItemDelete(x._id, l._id)}>Delete Item</button>
+                <Button color='danger' onClick={() => handleItemDelete(x._id, l._id)}>Delete This Item</Button>
             </div> 
             )
         })
@@ -77,8 +76,7 @@ const Posting = props => {
             <div key={i}>
                 <h2>{l.listTitle}</h2>
                 <EditList url={ props.url } token={props.updateToken} refresh={props.refresh} lists={l}/>
-                <button onClick={() => handleListDelete(l._id)}>Delete List</button>
-                <p>Add a New Item to a List</p>
+                <Button color='danger' onClick={() => handleListDelete(l._id)}>Delete List</Button>
                 <NewItem  url = { props.url} user={props.user} token={props.updateToken} list={l} refresh={props.refresh} />
                 {itemz}
             </div>

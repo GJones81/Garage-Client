@@ -50,7 +50,7 @@ const EditList = props => {
 
     return (
         <div>
-            <Button color="danger" onClick={toggle}>Edit this List</Button>
+            <Button color="primary" onClick={toggle}>Edit this List</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit the Title of this List</ModalHeader>
                 <ModalBody>

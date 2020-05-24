@@ -4,8 +4,15 @@ import styled from 'styled-components'
 import MapboxGLMap from './MapboxGLMap'
 
 const Discovery = props => {
-  
+
   let discovery = props.discoveries.publicSales.map((d, i) =>{
+
+    let revealItems = () => {
+      return (
+        { items }
+      )
+    }
+
     console.log(props.discoveries)
     let items = d.list.item.map((x, y) => {
         return (
@@ -24,9 +31,10 @@ const Discovery = props => {
           <div key={i}>
           <p>Address: {d.address}</p>
           <p>Date: {d.date}</p>
-            { items }
+          <button onClick={revealItems}>See the items for sale</button>
         </div>
     )
+   
 })
 
       let Header = styled("header")`

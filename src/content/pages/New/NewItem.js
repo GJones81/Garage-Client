@@ -116,7 +116,6 @@ const NewItem = props => {
                                     <Label>Price:</Label>
                                         <Input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
                                     <Button color='primary' type="submit">Add the item</Button>
-                            
                                 <ModalFooter>
                                     <Button color='primary' type="submit" onClick={toggle}>Add the Item</Button>{''}
                                     <Button color='secondary' onClick={toggle}>Cancel</Button>
@@ -124,9 +123,6 @@ const NewItem = props => {
                             </FormGroup>
                         </Form>
                     </div>
-
-
-
                         <br />
                         <Button color='success' onClick={toggleNested}>Show Nested Modal</Button>
                         <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>

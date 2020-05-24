@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 //This is a form to create a new, empty list 
 const NewLists = props => {
@@ -50,16 +50,18 @@ const NewLists = props => {
 
     return (
             <div>
-                <Button color="danger" onClick={toggle}>Create A New List</Button>
+                <Button color="info" onClick={toggle}>Create A New List</Button>
                 <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle}><h3>Create a New List</h3></ModalHeader>
                     <ModalBody>
                         <div className="listForm">
-                            <form onSubmit={handleSubmit}>
-                                <label>List Title:</label>
-                                    <input type="text" name='listTitle' onChange={e => setListTitle(e.target.value)} />
-                                    <input type='submit' />
-                            </form>
+                            <Form onSubmit={handleSubmit}>
+                                <FormGroup>
+                                    <Label>List Title:</Label>
+                                        <Input type="text" name='listTitle' onChange={e => setListTitle(e.target.value)} />
+                                        <Button color='primary' type='submit'>Create an empty list</Button>
+                                </FormGroup>
+                            </Form>
                         </div>
                         <br />
                     <Button color="success" onClick={toggleNested}>Show Nested Modal?</Button>
