@@ -13,7 +13,7 @@ import Discovery from './pages/Discovery'
 import Posting from './pages/Posting'
 
 
-const API_URL = 'http://localhost:3000/'
+const API_URL = process.env.REACT_APP_SERVER_URL
 
 
 const Content = props => {
