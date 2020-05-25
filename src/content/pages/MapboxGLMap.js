@@ -1,44 +1,41 @@
-import React, { useEffect, useRef, useState } from "react";
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+import React, {useState} from 'react';
+import ReactMapGL, { Marker, GeoLocateControl } from 'react-map-gl'
 
-const styles = {
-  width: "100%",
-  height: "400px",
-  
-};
+const MapboxGLMap = props => {
 
-const MapboxGLMap = () => {
-  const [map, setMap] = useState(null);
-  const mapContainer = useRef(null);
-
-  useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1Ijoic2p5OTUiLCJhIjoiY2thbGw4dnd4MTJ6czJycDR1aWU5ajd0dCJ9.EbJoQtqZr47OEbEKLgJCEw";
-    const initializeMap = ({ setMap, mapContainer }) => {
-      const map = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
-        center: [-122.3321, 47.6062],
-        zoom: 12
-      });
-
-      map.on("load", () => {
-        setMap(map);
-        map.resize();
-      });
-    };
-
-    if (!map) initializeMap({ setMap, mapContainer });
-  }, [map]);
+    // let [userLocation, setUserLocation ] =useState('')
+    // let [originalLocation, setOriginalLocation ] = useState('')
+    
+   
+        const [ viewport, setViewport ] = useState({
+            width: "100%",
+            height: "400px",
+            latitude: 47.6062,
+            longitude: -122.3321,
+            zoom: 12
+          })
+        
+        // const _onViewportChange = viewport => setViewport({...viewport, transitionDuration: 3000 })
 
 
-  const latLong = () => {
-    let token = localStorage.getItem('boilerToken')
-    fetch 
-  }
+return (
+    <div>
+        <h1 style={{textAlign: 'center', fontSize: '25px', fontWeight: 'bolder' }}>
+            GeoLocator: Click To Find Your Location or click 
+            <a href="/search">here</a> to search for a location</h1>
+        {/* <ReactMapGL 
+            {...viewport}
+            mapboxApiAccessToken='pk.eyJ1Ijoic2p5OTUiLCJhIjoiY2thbGw4dnd4MTJ6czJycDR1aWU5ajd0dCJ9.EbJoQtqZr47OEbEKLgJCEw'
+                mapStyle="mapbox://styles/sjy95/ckalztmwd2f8f1in0m2cvvp2k"
+                onViewportChange={viewport => {
+                    setViewport(viewport);
+                }}
+            >
+            
+        </ReactMapGL> */}
+    </div>
+)
 
-  return <div ref={el => (mapContainer.current = el)} style={styles} />;
-};
+}
 
-export default MapboxGLMap;
+export default MapboxGLMap

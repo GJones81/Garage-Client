@@ -2,6 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
 
+import '../App.css'
+
 import NewItem from './New/NewItem'
 import EditItem from './New/EditItem'
 import NewLists from './New/NewLists'
@@ -59,17 +61,18 @@ const Posting = props => {
         let itemz = l.item.map((x, y) => {
             return (
             <div key={y}>
-                <Card>
+                {/* this is per item  */}
+                <Card> 
                     <CardBody>
-                        <CardTitle><p>Item</p></CardTitle>
+                        <CardTitle><p>Item:</p></CardTitle>
                             <CardSubtitle><p>{x.name}</p></CardSubtitle>
                     </CardBody>
-                        <img src={x.image}></img>
+                        <CardImg src={x.image}></ CardImg>
                     <CardBody>
                         <CardText>
-                            <p>Price</p>
+                            <p>Price:</p>
                             <p>${x.price}</p>
-                            <p>Condition</p>
+                            <p>Condition:</p>
                             <p>{x.condition}</p>
                         </CardText>
                             <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}/>
@@ -82,10 +85,12 @@ const Posting = props => {
         return(
             <div key={i}>
                 <h2>{l.listTitle}</h2>
-                <EditList url={ props.url } token={props.updateToken} refresh={props.refresh} lists={l}/>
-                <Button color='danger' onClick={() => handleListDelete(l._id)}>Delete List</Button>
-                <NewItem  url = { props.url} user={props.user} token={props.updateToken} list={l} refresh={props.refresh} />
-                {itemz}
+                <div id='listButtons'>
+                    <NewItem  url = { props.url} user={props.user} token={props.updateToken} list={l} refresh={props.refresh} />
+                    <EditList url={ props.url } token={props.updateToken} refresh={props.refresh} lists={l}/>
+                    <Button color='danger' onClick={() => handleListDelete(l._id)}>Delete List</Button>
+                </div>
+                    {itemz}
             </div>
         )
     })
