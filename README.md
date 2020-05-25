@@ -50,9 +50,7 @@ The initial plan for this application included the integration of the Mapbox API
 |GET|/discovery|Retrieves all the sales in the database|
 
 
-### Get Started
-
-For local development
+### Local Development
 
 1. Fork and clone
 2. Run `npm i` (or `npm audit fix` if needed)
