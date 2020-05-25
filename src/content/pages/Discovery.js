@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 
 import MapboxGLMap from './MapboxGLMap'
+let [showItems, setShowItems ] = useState('')
+
 
 const Discovery = props => {
 
   let discovery = props.discoveries.publicSales.map((d, i) =>{
 
     let revealItems = () => {
+      console.log({items})
+      console.log(props.discoveries)
       return (
         { items }
       )
@@ -19,11 +23,9 @@ const Discovery = props => {
         <div key={y}>
             <img src={x.image}></img>
             <p>Item</p>
-            <p>{x.name}</p>
-            <p>Price</p>
-            <p>${x.price}</p>
-            <p>Condition</p>
-            <p>{x.condition}</p>
+            <p>Name: {x.name}</p>
+            <p>Price: ${x.price}</p>
+            <p>Condition: {x.condition}</p>
         </div> 
         )
     })
@@ -31,10 +33,10 @@ const Discovery = props => {
           <div key={i}>
           <p>Address: {d.address}</p>
           <p>Date: {d.date}</p>
-          <button onClick={revealItems}>See the items for sale</button>
+          <button onClick={revealItems} item={props.item}>See the items for sale</button>
+          {showItems}
         </div>
     )
-   
 })
 
       
@@ -44,7 +46,6 @@ const Discovery = props => {
         <>
             <h1>Look for Sales</h1>
           <main>
-            
             <MapboxGLMap />
           </main>
         </>

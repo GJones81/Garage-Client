@@ -121,7 +121,7 @@ const Content = props => {
         () => <Signup user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/discovery" render={
-        () => <Discovery user={props.user} updateToken={props.updateToken} refresh={callAllAPI} discoveries={discoveries} />
+        () => <Discovery user={props.user} updateToken={props.updateToken}  refresh={callAllAPI} discoveries={discoveries} />
       } />
       <Route path="/posting" render={
         () => <Posting 

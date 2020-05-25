@@ -32,6 +32,12 @@ const MapboxGLMap = () => {
     if (!map) initializeMap({ setMap, mapContainer });
   }, [map]);
 
+
+  const latLong = () => {
+    let token = localStorage.getItem('boilerToken')
+    fetch 
+  }
+
   return <div ref={el => (mapContainer.current = el)} style={styles} />;
 };
 
