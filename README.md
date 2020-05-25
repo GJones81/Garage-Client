@@ -1,4 +1,4 @@
-# Garage
+# Garage - Client-side
 
 This is the client side of the Garage application. The app allows the user to do multiple things to help facilitate a garage sale or yard sale. The app can create and manage an empty list, add items to that list and manage those items, as well as create a sale event that has a date, address location, and an attached list of items for sale. The afore mentioned functionality is only accessible to the individual user who is logged in and owns those datasets. A logged in user can also see a list of all sales which have been created and a list of the items available at each sale. When the list is first created it only has a title and an Id number, and the title of the list can be edited. *Note* When the list is deleted, all items on that list are deleted as well. Items are added to the list as subdocuments. Items on the list can be edited and deleted as needed. When the sale document is created it references a list. The sale document itself can be edited and deleted. The application client-side uses the React.js. The server-side uses Express.js, MongoDB, and Mongoose to store the data.
 
