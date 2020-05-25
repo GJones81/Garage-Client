@@ -61,15 +61,15 @@ const Posting = props => {
             <div key={y}>
                 <Card>
                     <CardBody>
-                        <CardTitle><p>Item</p></CardTitle>
+                        <CardTitle><p>Item:</p></CardTitle>
                             <CardSubtitle><p>{x.name}</p></CardSubtitle>
                     </CardBody>
-                        <img src={x.image}></img>
+                        <CardImg src={x.image}></ CardImg>
                     <CardBody>
                         <CardText>
-                            <p>Price</p>
+                            <p>Price:</p>
                             <p>${x.price}</p>
-                            <p>Condition</p>
+                            <p>Condition:</p>
                             <p>{x.condition}</p>
                         </CardText>
                             <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}/>

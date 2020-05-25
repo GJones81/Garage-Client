@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components'
+import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap'
 
 import MapboxGLMap from './MapboxGLMap'
 
 const Discovery = props => {
 
   let discovery = props.discoveries.publicSales.map((d, i) =>{
-
-    let revealItems = () => {
-      return (
-        { items }
-      )
-    }
-
-    console.log(props.discoveries)
     let items = d.list.item.map((x, y) => {
         return (
         <div key={y}>
-            <img src={x.image}></img>
-            <p>Item</p>
-            <p>{x.name}</p>
-            <p>Price</p>
-            <p>${x.price}</p>
-            <p>Condition</p>
-            <p>{x.condition}</p>
+          <Card>
+            <CardBody>
+              <CardTitle><p>Item:</p></CardTitle>
+                <CardSubtitle><p>{x.name}</p></CardSubtitle>
+            </CardBody>
+              <CardImg src={x.image}></CardImg>
+            <CardBody>
+              <CardText>
+                <p>Price</p>
+                <p>${x.price}</p>
+                <p>Condition</p>
+                <p>{x.condition}</p>
+              </CardText>
+            </CardBody>
+          </Card>
         </div> 
         )
     })
@@ -31,10 +32,9 @@ const Discovery = props => {
           <div key={i}>
           <p>Address: {d.address}</p>
           <p>Date: {d.date}</p>
-          <button onClick={revealItems}>See the items for sale</button>
+          { items }
         </div>
     )
-   
 })
 
       let Header = styled("header")`
