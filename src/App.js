@@ -5,7 +5,7 @@ import jwtDecode from 'jwt-decode'
 
 
 // Resources and custom components
-import './App.css';
+
 import Content from './content/Content'
 import Footer from './nav/Footer'
 import Header from './nav/Header'

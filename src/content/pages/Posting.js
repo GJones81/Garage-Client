@@ -1,8 +1,7 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
 
-import '../App.css'
+
 
 import NewItem from './New/NewItem'
 import EditItem from './New/EditItem'
@@ -67,7 +66,7 @@ const Posting = props => {
                         <CardTitle><p>Item:</p></CardTitle>
                             <CardSubtitle><p>{x.name}</p></CardSubtitle>
                     </CardBody>
-                        <CardImg src={x.image}></ CardImg>
+                        <CardImg class="itemImg" src={x.image}></ CardImg>
                     <CardBody>
                         <CardText>
                             <p>Price:</p>
