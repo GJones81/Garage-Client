@@ -55,6 +55,6 @@ The initial plan for this application included the integration of the Mapbox API
 For local development
 
 1. Fork and clone
-2. Run `npm i` (run `npm audit fix` if needed - stuff changes a lot in React!)
+2. Run `npm i` (or `npm audit fix` if needed)
 3. Create a `.env.local` file at the top level 
 4. Create an environment variable called REACT_APP_SERVER_URL set to the localhost server's url
