@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { Redirect, } from 'react-router-dom'
 
@@ -77,7 +77,6 @@ const Profile = props => {
 	//deleting the list and the items al together??
 	//What happens to the list when there is no sale?? null value??
 	//Should we make it so that it only deletes the sale date/address??
-	let [ saleId, setSaleId ] = useState(props.sale._id)
 
 	const deleteSale = (saleId) => {
 		
