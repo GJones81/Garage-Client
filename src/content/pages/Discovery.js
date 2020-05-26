@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap'
+import { Button, Card, CardGroup, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap'
 
 //import MapboxGLMap from './MapboxGLMap'
 
@@ -13,18 +13,15 @@ const Discovery = props => {
     let items = d.list.item.map((x, y) => {
         return (
         <div key={y}>
-          <Card>
+          <Card body inverse style={{ backgroundColor: '#778899', borderColor: '#000' }}>
             <CardBody>
-              <CardTitle><p>Item:</p></CardTitle>
-                <CardSubtitle><p>{x.name}</p></CardSubtitle>
+              <CardTitle><p>Item: {x.name}</p></CardTitle>
             </CardBody>
-              <CardImg src={x.image}></CardImg>
+              <CardImg src={x.image} style={{height: 180, width: 318}}></CardImg>
             <CardBody>
               <CardText>
-                <p>Price</p>
-                <p>${x.price}</p>
-                <p>Condition</p>
-                <p>{x.condition}</p>
+                <p>Price: ${x.price}</p>
+                <p>Condition: {x.condition}</p>
               </CardText>
             </CardBody>
           </Card>
@@ -36,24 +33,10 @@ const Discovery = props => {
           <div key={i}>
           <p>Address: {d.address}</p>
           <p>Date: {d.date}</p>
-          {items}
+          <CardGroup> {items} </CardGroup>
         </div>
     )
 })
-
-      
-
-    // let Layout = () => {
-    //   return (
-    //     <>
-    //         <h1>Look for Sales</h1>
-    //       <main>
-    //         <MapboxGLMap />
-    //       </main>
-    //     </>
-    //   );
-    // };
-
 
     return (
       <div>
@@ -61,7 +44,7 @@ const Discovery = props => {
           {/* <Layout /> */}
         </div>
         <div>
-          { discovery }
+        { discovery }
         </div>
       </div>
     )

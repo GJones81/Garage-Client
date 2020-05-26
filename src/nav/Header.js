@@ -4,7 +4,7 @@ const Header = props => {
   return (
     <header className="App-header">
       <h1>Garagé</h1>
-      <h2>A place to sell or find items</h2>
+      <h2>Shop more, shop less, either way you shoppin Boujie.</h2>
     </header>
   )
 }

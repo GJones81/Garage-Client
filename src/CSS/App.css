@@ -56,9 +56,9 @@ nav a:hover {
 form {
   display: block;
 }
-.card{
-  height: 500px;
-  width: 500px;
+Card{
+  height: 600px;
+  width: 400px;
 }
 
 
