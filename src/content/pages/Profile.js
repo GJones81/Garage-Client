@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Card, CardBody, CardImgOverlay, CardTitle, CardText, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { Redirect, } from 'react-router-dom'
 
 // the import below is made in the attempt to make the code cleaner
@@ -119,14 +119,27 @@ const Profile = props => {
 	let sales = props.sale.currentSales.map((s, j) => {
 		if (s.list)
 			return (
-				<div key={j}>
-					<p>{s.list.listTitle}</p>
-					<p>{s.date}</p>
-					<p>{s.address}</p>
+				// <div key={j}>
+				// 	<p><strong><a>{s.list.listTitle}</a></strong></p>
+				// 	<p>{s.date}</p>
+				// 	<p>{s.address}</p>
 
-					<p><strong>Edit Sale</strong></p>
-					<EditSale url = {props.url} token = {props.updateToken} sale={s} lists={props.lists}/>
-					<button onClick={() => deleteSale(s._id)}>Delete</button>
+				// 	<p><strong>Edit Sale</strong></p>
+				// 	<EditSale url = {props.url} token = {props.updateToken} sale={s} lists={props.lists}/>
+				// 	<button onClick={() => deleteSale(s._id)}>Delete</button>
+				// </div>
+				<div  key={j}>
+					<Card style ={{height: 150, width: 925}}>
+						<CardBody>
+							<CardImgOverlay>
+								<CardTitle><p><strong><a>{s.list.listTitle}</a></strong></p></CardTitle>
+								<CardText>
+									<p>{s.address}</p>
+									<small className="text-muted"><p>{s.date}</p></small>
+								</CardText>
+							</CardImgOverlay>
+						</CardBody>
+					</Card>
 				</div>
 			)
 	})

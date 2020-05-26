@@ -5,6 +5,7 @@ import NewItem from './New/NewItem'
 import EditItem from './New/EditItem'
 import NewLists from './New/NewLists'
 import EditList from './New/EditList'
+//import '../css/Button.css'
 
 //fetch calls edit/delete should go here 
 const Posting = props => {
@@ -53,20 +54,20 @@ const Posting = props => {
     let list = props.lists.map((l, i) => {
         let itemz = l.item.map((x, y) => {
             return (
-            <div key={y} style={{height: 600, width: 400}}>
+            <div key={y} >
                 {/* this is per item  */}
-                <Card style={{width: 300}}> 
+                <Card body inverse style={{ backgroundColor: '#778899', borderColor: '#000' }}> 
                     <CardBody >
                         <CardTitle><p>Item: {x.name}</p></CardTitle>
                            
                     </CardBody>
-                        <CardImg class="itemImg" src={x.image}></ CardImg>
+                        <CardImg class="itemImg" style={{height: 180, width: 318}} src={x.image}></ CardImg>
                     <CardBody>
                         <CardText>
                             <p>Price: ${x.price}</p>
                             <p>Condition: {x.condition}</p>
                         </CardText>
-                            {/* <div class="cardButtons"> */}
+                            {/* //<div class="cardButtons"> */}
                                 <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}/>
                                 <Button color='danger' onClick={() => handleItemDelete(x._id, l._id)}>Delete This Item</Button>
                             {/* </div> */}

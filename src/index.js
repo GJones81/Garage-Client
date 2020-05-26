@@ -4,7 +4,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App';
 import './CSS/App.css'
-import './CSS/Button.css'
+import './content/css/Button.css'
 import './CSS/Images.css'
 import * as serviceWorker from './serviceWorker';
 // import { MapboxGLMap } from "./pages/MapboxGLMap";
