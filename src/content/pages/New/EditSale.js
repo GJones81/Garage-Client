@@ -36,7 +36,7 @@ const EditSale = props => {
         e.preventDefault()
         console.log('hitting the PUT route for editing a sale ')
         let token = localStorage.getItem('boilerToken')
-        fetch(props.url + '/sale/' + saleId, {
+        fetch(props.url + 'sale/' + saleId, {
             method: 'PUT',
             body: JSON.stringify ({
                 saleId: props.sale._id,

@@ -45,7 +45,7 @@ const Profile = props => {
 		console.log(list)
 		e.preventDefault()
 		let token = localStorage.getItem('boilerToken')
-		fetch(props.url + '/sale', {
+		fetch(props.url + 'sale', {
 			method: 'POST',
 			body: JSON.stringify({
 				user: props.user._id,
@@ -83,7 +83,7 @@ const Profile = props => {
 	const deleteSale = (saleId) => {
 		
 		let token = localStorage.getItem('boilerToken')
-		fetch(props.url + '/sale/' + saleId, {
+		fetch(props.url + 'sale/' + saleId, {
 			method: 'DELETE',
 			body: JSON.stringify({saleId}),
 			headers: {

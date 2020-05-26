@@ -18,7 +18,7 @@ const Posting = props => {
     const handleItemDelete = (itemId, listId) => {
         let token = localStorage.getItem('boilerToken')
         console.log(itemId, listId)
-        fetch(props.url + '/list/item/' + itemId, {  // <-- im wondering if that is the proper endpoint?
+        fetch(props.url + 'list/item/' + itemId, {  // <-- im wondering if that is the proper endpoint?
             method: 'DELETE',
             body: JSON.stringify({listId}),
             headers: {
@@ -38,7 +38,7 @@ const Posting = props => {
 
     const handleListDelete = (listId) => {
         let token = localStorage.getItem('boilerToken')
-        fetch(props.url + '/list/' + listId, {
+        fetch(props.url + 'list/' + listId, {
             method: 'DELETE',
             body: JSON.stringify({listId}),
             headers: {
