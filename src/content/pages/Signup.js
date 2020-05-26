@@ -26,7 +26,7 @@ const Signup = props => {
 
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     })
     .then(response => {

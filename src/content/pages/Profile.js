@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { Redirect, } from 'react-router-dom'
 
@@ -60,7 +60,9 @@ const Profile = props => {
 			})
 			.then(response => {
 				console.log('Posting the Sale was Successful')
-				
+				props.refresh()
+				setDate('')
+				setAddress('')
 			})
 			.catch(err => {
 				console.log('There was an error creating a Sale..', err)
@@ -68,6 +70,9 @@ const Profile = props => {
 		
 	}
 
+	useEffect(() => {
+		props.refresh()
+	}, [])
 	//I dont think the useState is effective b/c were
 	//were not passing it down from the parent of Profile.js(fix it)
 	
@@ -86,11 +91,12 @@ const Profile = props => {
 			body: JSON.stringify({saleId}),
 			headers: {
 				'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+				'Content-Type': 'application/json'
 			}
 		})
 		.then(() => {
 			console.log('delete was successful')
+			props.refresh()
 		})
 		.catch(err => {
 			console.log('Something wrong editing the sale')

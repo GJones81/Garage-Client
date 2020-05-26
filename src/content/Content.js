@@ -27,7 +27,7 @@ const Content = props => {
   const callListAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('ListAPI Function running')
-   fetch(API_URL+ 'list', { 
+   fetch(API_URL + 'list', { 
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
