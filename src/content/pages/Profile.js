@@ -60,7 +60,9 @@ const Profile = props => {
 			})
 			.then(response => {
 				console.log('Posting the Sale was Successful')
-				
+				props.refresh()
+				setDate('')
+				setAddress('')
 			})
 			.catch(err => {
 				console.log('There was an error creating a Sale..', err)
@@ -86,12 +88,12 @@ const Profile = props => {
 			body: JSON.stringify({saleId}),
 			headers: {
 				'Authorization': `Bearer ${token}`,
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': 'https://sam-guy-garage.herokuapp.com/'
+				'Content-Type': 'application/json'
 			}
 		})
 		.then(() => {
 			console.log('delete was successful')
+			props.refresh()
 		})
 		.catch(err => {
 			console.log('Something wrong editing the sale')
