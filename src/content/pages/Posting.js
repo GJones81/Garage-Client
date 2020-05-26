@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
+import { Button, Card, CardGroup, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
 
 
 
@@ -59,23 +59,23 @@ const Posting = props => {
     let list = props.lists.map((l, i) => {
         let itemz = l.item.map((x, y) => {
             return (
-            <div key={y}>
+            <div key={y} style={{height: 600, width: 400}}>
                 {/* this is per item  */}
-                <Card> 
-                    <CardBody>
-                        <CardTitle><p>Item:</p></CardTitle>
-                            <CardSubtitle><p>{x.name}</p></CardSubtitle>
+                <Card style={{width: 300}}> 
+                    <CardBody >
+                        <CardTitle><p>Item: {x.name}</p></CardTitle>
+                           
                     </CardBody>
                         <CardImg class="itemImg" src={x.image}></ CardImg>
                     <CardBody>
                         <CardText>
-                            <p>Price:</p>
-                            <p>${x.price}</p>
-                            <p>Condition:</p>
-                            <p>{x.condition}</p>
+                            <p>Price: ${x.price}</p>
+                            <p>Condition: {x.condition}</p>
                         </CardText>
-                            <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}/>
-                            <Button color='danger' onClick={() => handleItemDelete(x._id, l._id)}>Delete This Item</Button>
+                            {/* <div class="cardButtons"> */}
+                                <EditItem url = { props.url} token={props.updateToken} list={l} item={x} refresh={props.refresh}/>
+                                <Button color='danger' onClick={() => handleItemDelete(x._id, l._id)}>Delete This Item</Button>
+                            {/* </div> */}
                     </CardBody>  
                 </Card>
             </div> 
@@ -84,12 +84,12 @@ const Posting = props => {
         return(
             <div key={i}>
                 <h2>{l.listTitle}</h2>
-                <div id='listButtons'>
+                <div id="listElems" >
                     <NewItem  url = { props.url} user={props.user} token={props.updateToken} list={l} refresh={props.refresh} />
                     <EditList url={ props.url } token={props.updateToken} refresh={props.refresh} lists={l}/>
-                    <Button color='danger' onClick={() => handleListDelete(l._id)}>Delete List</Button>
+                    <Button class='listButtons' color='danger' onClick={() => handleListDelete(l._id)}>Delete List</Button>
                 </div>
-                    {itemz}
+                    <CardGroup> {itemz} </CardGroup>
             </div>
         )
     })

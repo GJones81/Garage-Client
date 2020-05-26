@@ -74,7 +74,7 @@ const EditList = props => {
                     </Modal>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
+                    <Button color="success" onClick={toggle}>Submit</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
@@ -83,3 +83,17 @@ const EditList = props => {
 }
 
 export default EditList
+
+{/* <Form onSubmit={handleSubmit}>
+<FormGroup>
+    <div>
+        <Label><strong>List(current)</strong>: {props.list.listTitle}</Label>
+    </div>
+        <Label>Name:</Label>
+            <Input type="text" name="name" onChange={e => setName(e.target.value)}/>
+    <ModalFooter>
+        <Button color='primary' type="submit" onClick={toggle}>Add the Item</Button>{''}
+        <Button color='secondary' onClick={toggle}>Cancel</Button>
+    </ModalFooter>
+</FormGroup>
+</Form> */}

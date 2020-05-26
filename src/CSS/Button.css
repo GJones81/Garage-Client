@@ -1,3 +1,6 @@
-#listButtons {
+#listElems {
+    display: inline-block;
+}
+.cardButtons {
     display: inline-block;
 }
