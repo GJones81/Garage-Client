@@ -34,8 +34,7 @@ const EditList = props => {
             }),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': process.env.REACT_APP_CORS
+                'Content-Type': 'application/json'
             }
         })
         .then(Response => {
