@@ -50,7 +50,7 @@ const NewLists = props => {
 
     return (
             <div>
-                <Button color="info" onClick={toggle}>Create A New List</Button>
+                <Button class="listButtons" color="info" onClick={toggle}>Create A New List</Button>
                 <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle}><h3>Create a New List</h3></ModalHeader>
                     <ModalBody>

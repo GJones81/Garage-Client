@@ -75,7 +75,11 @@ const NewItem = props => {
     }
     
     let widget = window.cloudinary.createUploadWidget({
-        cloudName: "swaggyi",
+        cloudName: "swaggyi", 
+        // cropping: true,
+        // croppingAspectRatio: 1.0,
+        maxImageWidth: 400,
+        maxiImageHeight: 400,   
         uploadPreset: "Garage" } ,
         (error, result) => { 
             checkUploadResult(result)
@@ -87,7 +91,7 @@ const NewItem = props => {
 
     return (
         <div>
-            <Button color='info' onClick={toggle}>Add an Item to the List</Button>
+            <Button class='listButtons' color='info' onClick={toggle}>Add an Item to the List</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Add an Item</ModalHeader>
                 <ModalBody>
@@ -95,12 +99,15 @@ const NewItem = props => {
                         <Button color='primary' onClick={() => showWidget(widget)}>Upload An Image</Button>
                         <Form onSubmit={handleSubmit}>
                             <FormGroup>
-                                <Label>New Item for :{props.list.listTitle}</Label>
+                                <div>
+                                    <Label><strong>List</strong>: {props.list.listTitle}</Label>
+                                </div>
                                         <Input type="hidden" name="image" value={imageUrl} />
                                         <img src={imageUrl} name='image' /> 
+                                        <br />
                                     <Label>Name:</Label>
                                         <Input type="text" name="name" onChange={e => setName(e.target.value)}/>
-                                    <Label for='condition'>Rate the Condition of the Item</Label>
+                                    <Label for='condition'>Condition:</Label>
                                         <Input type="select" name="condition" onChange={e => setCondition(e.target.value)}>
                                             <option>1</option>
                                             <option>2</option>
@@ -115,7 +122,7 @@ const NewItem = props => {
                                         </Input>
                                     <Label>Price:</Label>
                                         <Input type="number" name="price" onChange={e => setPrice(e.target.value)}/>
-                                    <Button color='primary' type="submit">Add the item</Button>
+                                    
                                 <ModalFooter>
                                     <Button color='primary' type="submit" onClick={toggle}>Add the Item</Button>{''}
                                     <Button color='secondary' onClick={toggle}>Cancel</Button>
@@ -124,10 +131,10 @@ const NewItem = props => {
                         </Form>
                     </div>
                         <br />
-                        <Button color='success' onClick={toggleNested}>Show Nested Modal</Button>
+                        {/* <Button color='success' onClick={toggleNested}>Show Nested Modal</Button> */}
                         <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
-                        <ModalHeader>Nested Modal Title</ModalHeader>
-                        <ModalBody>Stuff and things</ModalBody>
+                        {/* <ModalHeader>Nested Modal Title</ModalHeader>
+                        <ModalBody>Stuff and things</ModalBody> */}
                         <ModalFooter>
                             <Button color='primary' onClick={toggleNested}>Done</Button>{''}
                             <Button color='secondary' onClick={toggleAll}>All Done</Button>
