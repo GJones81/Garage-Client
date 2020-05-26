@@ -131,10 +131,9 @@ const NewItem = props => {
                         </Form>
                     </div>
                         <br />
-                        {/* <Button color='success' onClick={toggleNested}>Show Nested Modal</Button> */}
+                        
                         <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
-                        {/* <ModalHeader>Nested Modal Title</ModalHeader>
-                        <ModalBody>Stuff and things</ModalBody> */}
+                       
                         <ModalFooter>
                             <Button color='primary' onClick={toggleNested}>Done</Button>{''}
                             <Button color='secondary' onClick={toggleAll}>All Done</Button>

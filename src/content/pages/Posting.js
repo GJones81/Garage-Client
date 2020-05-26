@@ -1,16 +1,10 @@
 import React from 'react';
 import { Button, Card, CardGroup, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
 
-
-
 import NewItem from './New/NewItem'
 import EditItem from './New/EditItem'
 import NewLists from './New/NewLists'
 import EditList from './New/EditList'
-
-
-//NOTE: Should discuss with Guy, maybe a suggestion, but do we want to render the edit form 
-// on the same page rather than rendering a totally different page??
 
 //fetch calls edit/delete should go here 
 const Posting = props => {
@@ -96,7 +90,7 @@ const Posting = props => {
 
     
     return (
-        //As a suggestion maybe we should have two different forms and use routers??
+        
         <div>
               <div className="addForms">
                 <NewLists url = { props.url} token={props.updateToken} refresh={props.refresh} />
