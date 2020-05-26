@@ -15,7 +15,7 @@ const Signup = props => {
     e.preventDefault()
     // TODO: Send the user sign up data to the server
     console.log('submit', email, password)
-     fetch(process.env.REACT_APP_SERVER_URL + 'auth/signup', {
+     fetch(process.env.REACT_APP_SERVER_URL + '/auth/signup', {
       method: 'POST',
       body: JSON.stringify({
         firstname,

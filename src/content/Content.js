@@ -27,7 +27,7 @@ const Content = props => {
   const callListAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('ListAPI Function running')
-   fetch(API_URL+ 'list', { 
+   fetch(API_URL+ '/list', { 
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
@@ -50,7 +50,7 @@ const Content = props => {
  const callSaleAPI = () => {
    let token = localStorage.getItem('boilerToken')
    console.log('SaleAPI Function running')
-   fetch(API_URL + 'sale', {
+   fetch(API_URL + '/sale', {
      method: 'GET',
      headers: {
        'Authorization': `Bearer ${token}`
@@ -74,7 +74,7 @@ const Content = props => {
  const callDiscoveryAPI = () => {
   let token = localStorage.getItem('boilerToken')
   console.log('DiscoveryAPI Function running')
-  fetch(API_URL + 'discovery', {
+  fetch(API_URL + '/discovery', {
     method: 'GET',
     headers: {
     'Authorization': `Bearer ${token}`

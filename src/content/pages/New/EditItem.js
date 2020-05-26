@@ -33,7 +33,7 @@ const EditItem = props => {
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()
-        fetch(props.url + 'list/item/' + itemId, {
+        fetch(props.url + '/list/item/' + itemId, {
             method: 'PUT',
             body: JSON.stringify({
                 listId: props.list._id,

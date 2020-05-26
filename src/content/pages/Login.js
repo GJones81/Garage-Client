@@ -13,7 +13,7 @@ const Login = props => {
     e.preventDefault()
     console.log('submit', email, password, process.env.REACT_APP_SERVER_URL)
     // Fetch call to POST data
-    fetch(process.env.REACT_APP_SERVER_URL + 'auth/login', {
+    fetch(process.env.REACT_APP_SERVER_URL + '/auth/login', {
       method: 'POST',
       body: JSON.stringify({
         email,

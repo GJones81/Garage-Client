@@ -28,7 +28,7 @@ const NewLists = props => {
     const handleSubmit = e => {
         let token = localStorage.getItem('boilerToken')
         e.preventDefault()
-        fetch(props.url + 'list', {
+        fetch(props.url + '/list', {
             method: 'POST',
             body: JSON.stringify({
                 listTitle
