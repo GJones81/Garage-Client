@@ -23,7 +23,8 @@ const Posting = props => {
             body: JSON.stringify({listId}),
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': process.env.REACT_APP_CORS
             }
         })
         .then(() => {

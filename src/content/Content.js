@@ -30,7 +30,8 @@ const Content = props => {
    fetch(API_URL+ 'list', { 
      method: 'GET',
      headers: {
-       'Authorization': `Bearer ${token}`
+       'Authorization': `Bearer ${token}`,
+       'Access-Control-Allow-Origin': process.env.REACT_APP_CORS
      }
    })
    .then(listResponse => {
@@ -53,7 +54,8 @@ const Content = props => {
    fetch(API_URL + 'sale', {
      method: 'GET',
      headers: {
-       'Authorization': `Bearer ${token}`
+       'Authorization': `Bearer ${token}`,
+       'Access-Control-Allow-Origin': process.env.REACT_APP_CORS
      }
    })
    .then(saleResponse => {
@@ -77,7 +79,8 @@ const Content = props => {
   fetch(API_URL + 'discovery', {
     method: 'GET',
     headers: {
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Access-Control-Allow-Origin': 'https://sam-guy-garage.herokuapp.com/'
     }
   })
   .then(discoveriesResponse => {

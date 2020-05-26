@@ -26,7 +26,8 @@ const Signup = props => {
 
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': process.env.REACT_APP_CORS
       }
     })
     .then(response => {

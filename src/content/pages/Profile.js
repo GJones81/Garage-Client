@@ -86,7 +86,8 @@ const Profile = props => {
 			body: JSON.stringify({saleId}),
 			headers: {
 				'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': 'https://sam-guy-garage.herokuapp.com/'
 			}
 		})
 		.then(() => {
