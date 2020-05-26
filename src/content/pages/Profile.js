@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { Redirect, } from 'react-router-dom'
 
@@ -70,6 +70,9 @@ const Profile = props => {
 		
 	}
 
+	useEffect(() => {
+		props.refresh()
+	}, [])
 	//I dont think the useState is effective b/c were
 	//were not passing it down from the parent of Profile.js(fix it)
 	
